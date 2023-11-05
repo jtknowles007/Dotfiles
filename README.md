@@ -5,5 +5,5 @@ cd ~/Dotfiles
 stow i3 i3status bash (etc.)
 ```
 
-Here's a good resource for dotfiles on GitHub [link](dotfiles.github.io)
+Here's a good resource for dotfiles on GitHub [dotfiles.github.io](dotfiles.github.io)
 
