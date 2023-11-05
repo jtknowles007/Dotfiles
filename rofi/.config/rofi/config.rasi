@@ -1,0 +1,154 @@
+* { 
+    /* Font */ 
+    font:                           "Jetbrains Mono 12";
+
+    /* Border Variables */
+    border-px:                      2px;
+    noborder-px:                    0px;
+
+    /* Radius Variables */
+    radius-px:                      10px;
+    noradius-px:                    0px;
+
+    /* Padding Variables */
+    padding-px:                     5px;
+    nopadding-px:                   0px;
+
+    /* Spacing Variables */
+    spacing-px:                     5px;
+    nospacing-px:                   0px;    
+
+    /* Color Variables */
+    foreground:                     #FFFFFF; // White
+    background:                     #000000; // Black
+    highlight:                      #FFFFFF; // White
+    cursor:                         #2A5677; // Lapis Lazuli
+    attention:                      #FF0000; // Red
+
+    /* Default Border and Radius */
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @padding-px;
+    spacing:                        @spacing-px;
+
+    /* Miscellaneous */
+    sidebar-mode:                   false;
+
+    /* Default Colors */
+    background-color:               @background;
+    normal-foreground:              @foreground;
+    normal-background:              @background;
+    active-foreground:              @attention;
+    active-background:              @background;
+    urgent-foreground:              @attention;
+    urgent-background:              @background;
+    alternate-normal-foreground:    @foreground;
+    alternate-normal-background:    @background;
+    alternate-active-foreground:    @foreground;
+    alternate-active-background:    @background;
+    alternate-urgent-foreground:    @attention;
+    alternate-urgent-background:    @background;
+    selected-normal-foreground:     @foreground;
+    selected-normal-background:     @cursor;
+    selected-active-foreground:     @attention;
+    selected-active-background:     @cursor;
+    selected-urgent-foreground:     @attention;
+    selected-urgent-background:     @cursor;
+}
+configuration {
+    modi:                           "drun";
+    show-icons:                     true;
+    icon-theme:                     "Papirus-Light";
+    display-drun:                   "Search";
+    scroll-method:                  0;
+    disable-history:                true;
+    case-insensitive:               true;
+}
+
+
+window {
+    border:                         @border-px;
+    border-radius:                  @noradius-px;
+    padding:                        @nopadding-px;
+    spacing:                        @nospacing-px;
+    background-color:               @background;
+    border-color:                   @cursor;
+    location:                       center;
+    anchor:                         center;
+    fullscreen:                     false;
+    width:                          600;
+    x-offset:                       0px;
+    y-offset:                       0px;
+}
+
+mainbox {
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @nopadding-px;
+    spacing:                        @nospacing-px;
+}
+inputbar {
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @padding-px;
+    spacing:                        @nospacing-px;
+}
+
+prompt {
+}
+
+
+entry {
+    placeholder:                    "";
+}
+
+message {
+}
+
+textbox {
+}
+
+listview {
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @nopadding-px;
+    spacing:                        @spacing-px;
+    layout:                         vertical;
+    lines:                          6;
+    columns:                        1;
+    scrollbar:                      false;
+    cycle:                          false;
+    dynamic:                        true;
+  
+}
+
+element {
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @nopadding-px;
+    spacing:                        @nospacing-px;
+    orientation:                    horizontal;
+    children:                       [ element-icon, element-text ];
+}
+
+element-icon {
+    size:                           75;
+}
+
+
+element-text {
+    border:                         @noborder-px;
+    border-radius:                  @noradius-px;
+    padding:                        @nopadding-px;
+    spacing:                        @nospacing-px;
+    layout:                         vertical;
+    vertical-align:                 0.5;
+    horizontal-align:               0;
+    drun-display-format:            "{name}";
+}
+
+mode-switcher {
+}
+
+Button {
+}

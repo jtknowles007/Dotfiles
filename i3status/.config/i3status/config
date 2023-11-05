@@ -1,0 +1,35 @@
+order += "dropbox"
+order += "uptime"
+order += "apt_updates"
+order += "keyboard_locks"
+order += "online_status"
+order += "net_iplist"
+order += "clock"
+
+dropbox {
+on_click 1 = "exec ~/bin/dropbox.sh"
+}
+
+net_iplist {
+	format = '{format_iface}'
+	format_iface = '{iface}:[{ip4}]'
+}
+
+clock {
+	format = ["{America/Indiana/Indianapolis}"]
+	format_time = "%a %B %d, %Y %I:%M %p"
+}
+
+online_status {
+	separator = false
+}
+
+clock {
+	align = left
+	separator = false
+	min_length = 33
+}
+
+uptime {
+	format = 'Uptime: {days} days {hours} hours {minutes} minutes'
+}
