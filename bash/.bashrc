@@ -112,3 +112,4 @@ if ! shopt -oq posix; then
   fi
 fi
 bind 'set completion-ignore-case on'
+export PATH="$PATH:/home/john/.local/bin/"
