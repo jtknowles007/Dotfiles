@@ -1,5 +1,4 @@
 ORDER += "DROPBOX"
-order += "uptime"
 order += "keyboard_locks"
 order += "online_status"
 order += "net_iplist"
