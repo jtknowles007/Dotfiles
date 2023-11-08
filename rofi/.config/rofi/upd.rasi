@@ -1,0 +1,81 @@
+* { 
+    /* Font */ 
+    font:                           "Jetbrains Mono 12";
+
+    /* Color Variables */
+    foreground:                     #FFFFFF; // White
+    background:                     #000000; // Black
+    highlight:                      #FFFFFF; // White
+    cursor:                         #2A5677; // Lapis Lazuli
+    attention:                      #FF0000; // Red
+
+    /* Miscellaneous */
+    sidebar-mode:                   false;
+}
+
+configuration {
+    show-icons: true;
+}
+
+
+
+window {
+    location: center;
+    anchor: center;
+    x-offset: 0px;
+    y-offset: 0px;
+    width: 300px;
+    height: 125px;
+    padding: 10px;
+    border: 2px;
+    border-color: @cursor;
+    background-color: @background;
+}
+
+mainbox {
+    children: [listview];
+    border: 0px;
+    padding: 0px;
+    spacing: 0px;
+    background-color: @background;
+}
+
+inputbar {
+    border: 0px;
+    background-color: @background;
+}
+
+prompt {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+entry {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+listview {
+    enabled: true;
+    columns: 1;
+    cycle: true;
+    scrollbar: false;
+    layout: vertical;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: @background;
+
+}
+
+element {
+orientation: horizontal;
+children: [ element-text ];
+}
+
+element-text {
+    background-color: @background;
+    text-color: @foreground;
+}
