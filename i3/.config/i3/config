@@ -22,7 +22,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 tiling_drag modifier titlebar
-
+for_window [class=".*"] title_window_icon yes
 focus_follows_mouse no
 
 # Application Keyboard Assignments
