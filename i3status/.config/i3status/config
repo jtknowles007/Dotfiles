@@ -7,7 +7,12 @@ order += "net_iplist"
 order += "clock"
 
 dropbox {
-on_click 1 = "exec ~/bin/dropbox.sh"
+    on_click 1 = "exec ~/bin/dropbox.sh"
+    color = '#8888FF'
+}
+
+apt_updates {
+on_click 1 = "exec ~/bin/upd.sh"
 }
 
 net_iplist {
@@ -28,8 +33,15 @@ clock {
 	align = left
 	separator = false
 	min_length = 33
+	color = '#FFFF00'
 }
 
 uptime {
 	format = 'Uptime: {days} days {hours} hours {minutes} minutes'
+	color = '#ccf308'
+}
+
+keyboard_locks {
+color_good = '#eb2746'
+color_bad = '#14689A'
 }
