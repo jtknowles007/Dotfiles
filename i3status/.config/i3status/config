@@ -3,7 +3,6 @@ order += "uptime"
 order += "apt_updates"
 order += "keyboard_locks"
 order += "online_status"
-order += "net_iplist"
 order += "clock"
 
 dropbox {
