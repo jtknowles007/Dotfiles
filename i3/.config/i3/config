@@ -182,3 +182,12 @@ bar {
 	position top
     status_command py3status
 }
+
+bar {
+    output DisplayPort-2
+    font pango: Jetbrains Mono 10
+    workspace_min_width 40
+    position top
+    tray_output none
+    status_command py3status --config ~/.config/i3status/config2
+}
