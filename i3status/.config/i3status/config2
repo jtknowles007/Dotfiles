@@ -1,0 +1,3 @@
+order += "lm_sensors"
+order += "moc"
+
