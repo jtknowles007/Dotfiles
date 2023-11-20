@@ -170,6 +170,15 @@ mode "resize" {
 font pango: Jetbrains Mono 8
 title_align center
 
+# class                 border  bground text    indicator child_border
+client.focused          #304830 #304830 #FFFFFF #304830   #285577
+client.focused_inactive #183030 #183030 #AAAAAA #303030   #5F676A
+client.unfocused        #181800 #181800 #AAAAAA #292D2E   #222222
+client.urgent           #D89030 #D89030 #FFFFFF #D89030   #D89030
+client.placeholder      #000000 #000000 #AAAAAA #000000   #0C0C0C
+
+client.background       #FFFFFF
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -181,6 +190,18 @@ bar {
 	tray_output none
 	position top
     status_command py3status
+
+      colors {
+        background #000000
+        statusline #FFFFFF
+        separator  #666666
+
+        focused_workspace  #304830 #304830 #FFFFFF
+        active_workspace   #304830 #304830 #D89030
+        inactive_workspace #183030 #183030 #AAAAAA
+        urgent_workspace   #D89030 #D89030 #FFFFFF
+        binding_mode       #000000 #000000 #AAAAAA
+        }
 }
 
 bar {
@@ -190,4 +211,16 @@ bar {
     position top
     tray_output none
     status_command py3status --config ~/.config/i3status/config2
+
+      colors {
+        background #000000
+        statusline #FFFFFF
+        separator  #666666
+
+        focused_workspace  #304830 #304830 #FFFFFF
+        active_workspace   #304830 #304830 #D89030
+        inactive_workspace #183030 #183030 #AAAAAA
+        urgent_workspace   #D89030 #D89030 #FFFFFF
+        binding_mode       #000000 #000000 #AAAAAA
+        }
 }
