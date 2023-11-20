@@ -3,11 +3,12 @@ order += "uptime"
 order += "apt_updates"
 order += "keyboard_locks"
 order += "online_status"
+order += "net_iplist"
 order += "clock"
 
 dropbox {
     on_click 1 = "exec ~/bin/dropbox.sh"
-    color = '#8888FF'
+    color = '#c07830'
 }
 
 apt_updates {
@@ -17,6 +18,7 @@ on_click 1 = "exec ~/bin/upd.sh"
 net_iplist {
 	format = '{format_iface}'
 	format_iface = '{iface}:[{ip4}]'
+	color = '#d89030'
 }
 
 clock {
@@ -32,15 +34,15 @@ clock {
 	align = left
 	separator = false
 	min_length = 33
-	color = '#FFFF00'
+	color = '#d89030'
 }
 
 uptime {
 	format = 'Uptime: {days} days {hours} hours {minutes} minutes'
-	color = '#ccf308'
+	color = '#c07830'
 }
 
 keyboard_locks {
-color_good = '#eb2746'
-color_bad = '#14689A'
+color_good = '#d89030'
+color_bad = '#304830'
 }
