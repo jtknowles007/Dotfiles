@@ -105,6 +105,24 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Define monitors
+set $LeftMon "DVI-D-0"
+set $CenterMon "DisplayPort-2"
+set $RightMon "HDMI-A-0"
+
+#Assign workspaces
+workspace $ws1 output $RightMon
+workspace $ws3 output $RightMon
+workspace $ws5 output $RightMon
+workspace $ws7 output $RightMon
+workspace $ws2 output $CenterMon
+workspace $ws4 output $CenterMon
+workspace $ws6 output $CenterMon
+workspace $ws8 output $CenterMon
+workspace $ws9 output $LeftMon
+workspace $ws10 output $leftMon
+
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -224,3 +242,18 @@ bar {
         binding_mode       #000000 #000000 #AAAAAA
         }
 }
+
+bar {
+    output DVI-D-0
+    font pango: Jetbrains Mono 10
+    workspace_min_width 40
+    position top
+    tray_output none
+    colors {
+        focused_workspace  #304830 #304830 #FFFFFF
+        active_workspace   #304830 #304830 #D89030
+        inactive_workspace #183030 #183030 #AAAAAA
+        urgent_workspace   #D89030 #D89030 #FFFFFF
+        binding_mode       #000000 #000000 #AAAAAA
+        }
+    }
