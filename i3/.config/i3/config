@@ -228,7 +228,7 @@ bar {
     workspace_min_width 40
     position top
     tray_output none
-    status_command py3status --config ~/.config/i3status/config2
+    # status_command py3status --config ~/.config/i3status/config2
 
       colors {
         background #000000
