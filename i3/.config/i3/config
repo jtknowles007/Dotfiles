@@ -9,6 +9,29 @@ set $mod1 Mod1
 
 # Define variables
 set $term "urxvt"
+set_from_resource $bg background
+set_from_resource $fg foreground
+set_from_resource $c00 color0
+set_from_resource $c01 color1
+set_from_resource $c02 color2
+
+set_from_resource $c03 color3
+set_from_resource $c04 color4
+set_from_resource $c05 color5
+
+set_from_resource $c06 color6
+set_from_resource $c07 color7
+set_from_resource $c08 color8
+
+set_from_resource $c09 color9
+set_from_resource $c10 color10
+set_from_resource $c11 color11
+
+set_from_resource $c12 color12
+set_from_resource $c13 color13
+set_from_resource $c14 color14
+set_from_resource $c15 color15
+
 # Set font
 #font pango:monospace 10
 
@@ -188,14 +211,14 @@ mode "resize" {
 font pango: Jetbrains Mono 8
 title_align center
 
-# class                 border  bground text    indicator child_border
-client.focused          #304830 #304830 #FFFFFF #304830   #285577
-client.focused_inactive #183030 #183030 #AAAAAA #303030   #5F676A
-client.unfocused        #181800 #181800 #AAAAAA #292D2E   #222222
-client.urgent           #D89030 #D89030 #FFFFFF #D89030   #D89030
-client.placeholder      #000000 #000000 #AAAAAA #000000   #0C0C0C
+# class                 border  bground text    indicator   child_border
+client.focused          $c02    $c02    $c07    $c04        $c02
+client.focused_inactive $c01    $c01    $c08    $c08        $c01
+client.unfocused        $c00    $c00    $c09    $c09        $c00
+client.urgent           $c04    $c04    $fg     $c04        $co4
+client.placeholder      $c00    $coo    $c10    $c00        $c00
 
-client.background       #FFFFFF
+client.background       $bg
 
 bindsym $mod+r mode "resize"
 
@@ -210,15 +233,15 @@ bar {
     status_command py3status
 
       colors {
-        background #000000
-        statusline #FFFFFF
-        separator  #666666
-
-        focused_workspace  #304830 #304830 #FFFFFF
-        active_workspace   #304830 #304830 #D89030
-        inactive_workspace #183030 #183030 #AAAAAA
-        urgent_workspace   #D89030 #D89030 #FFFFFF
-        binding_mode       #000000 #000000 #AAAAAA
+        background $bg
+        statusline $c07
+        separator  $c02
+        #                   border  background  text
+        focused_workspace   $c02    $c02        $c07
+        active_workspace    $c01    $c01        $c08
+        inactive_workspace  $bg     $bg         $c09
+        urgent_workspace    $c04    $c04        $c03
+        binding_mode        $c10    $c10        $c14
         }
 }
 
@@ -229,17 +252,16 @@ bar {
     position top
     tray_output none
     # status_command py3status --config ~/.config/i3status/config2
-
       colors {
-        background #000000
-        statusline #FFFFFF
-        separator  #666666
-
-        focused_workspace  #304830 #304830 #FFFFFF
-        active_workspace   #304830 #304830 #D89030
-        inactive_workspace #183030 #183030 #AAAAAA
-        urgent_workspace   #D89030 #D89030 #FFFFFF
-        binding_mode       #000000 #000000 #AAAAAA
+        background $bg
+        statusline $c07
+        separator  $c02
+        #                   border  background  text
+        focused_workspace   $c02    $c02        $c07
+        active_workspace    $c01    $c01        $c08
+        inactive_workspace  $bg     $bg         $c09
+        urgent_workspace    $c04    $c04        $c03
+        binding_mode        $c10    $c10        $c14
         }
 }
 
@@ -249,11 +271,15 @@ bar {
     workspace_min_width 40
     position top
     tray_output none
-    colors {
-        focused_workspace  #304830 #304830 #FFFFFF
-        active_workspace   #304830 #304830 #D89030
-        inactive_workspace #183030 #183030 #AAAAAA
-        urgent_workspace   #D89030 #D89030 #FFFFFF
-        binding_mode       #000000 #000000 #AAAAAA
+      colors {
+        background $bg
+        statusline $c07
+        separator  $c02
+        #                   border  background  text
+        focused_workspace   $c02    $c02        $c07
+        active_workspace    $c01    $c01        $c08
+        inactive_workspace  $bg     $bg         $c09
+        urgent_workspace    $c04    $c04        $c03
+        binding_mode        $c10    $c10        $c14
         }
     }

@@ -1,8 +1,5 @@
 ! Colors
-URxvt.background: #000000
-URxvt.foreground: #ffffff
-URxvt.colorUL: #00ffff
-URxvt.underlineColor: #00ffff
+#include "/home/john/.xres/themes/mycolors.theme"
 
 ! Text
 URxvt.font: xft:Jetbrains Mono:style=Normal:pixelsize=14:antialias=true:hinting=true

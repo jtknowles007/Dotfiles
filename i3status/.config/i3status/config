@@ -8,17 +8,19 @@ order += "clock"
 
 dropbox {
     on_click 1 = "exec ~/bin/dropbox.sh"
-    color = '#c07830'
 }
 
 apt_updates {
 on_click 1 = "exec ~/bin/upd.sh"
+color_bad = '#98ce00'
+color_good = '#133c55'
 }
 
 net_iplist {
 	format = '{format_iface}'
 	format_iface = '{iface}:[{ip4}]'
-	color = '#d89030'
+	color_good = '#98ce00'
+	color_bad = '#133c55'
 }
 
 clock {
@@ -28,21 +30,21 @@ clock {
 
 online_status {
 	separator = false
+	color_off = '#133c55'
+	color_on = '#98ce00'
 }
 
 clock {
 	align = left
 	separator = false
 	min_length = 33
-	color = '#d89030'
 }
 
 uptime {
 	format = 'Uptime: {days} days {hours} hours {minutes} minutes'
-	color = '#c07830'
 }
 
 keyboard_locks {
 color_good = '#d89030'
-color_bad = '#304830'
+color_bad = '#133c55'
 }

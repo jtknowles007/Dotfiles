@@ -113,3 +113,4 @@ if ! shopt -oq posix; then
 fi
 bind 'set completion-ignore-case on'
 export PATH="$PATH:/home/john/.local/bin/:/snap/bin"
+LS_COLORS=$LS_COLORS':*.tmp=00;31:*.old=00;31:fi=01;33:*.swp=00;32:*.heic=01;35:*.pdf=01;30:*.xmp=00;31:*.theme=00;33:*.mp4=00;36'
