@@ -1,7 +1,7 @@
 alias cls='clear'
 alias l1='ls -1' #Display contents of directory with no additional info one file per line
 alias ll='ls -lhFA' #Display current directory listing in long format.  Include hidden directories
-alias la='ls -A' 
+alias la='ls -A --color=auto'
 alias l='ls -CF' #Display in columns with file type indicator
 alias lq='ls -Q' #Print contents of directory to STDOUT enclosed by double quotes.
 alias lsl='ls -lhFA | less' #Pipe output of ls to less for viewing large directory listings
