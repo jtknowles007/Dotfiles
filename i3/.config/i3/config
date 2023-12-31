@@ -37,7 +37,7 @@ set_from_resource $c15 color15
 
 font pango:Jetbrains Mono Normal 14
 exec --no-startup-id dex --autostart --environment i3
-
+exec --no-startup-id compton
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/bin/lock.sh --nofork
 exec --no-startup-id nm-applet
@@ -232,11 +232,11 @@ bar {
 	tray_output none
 	position top
     status_command py3status
-
+    tray_output none
       colors {
         background #00000099
         statusline $c07
-        separator  $c02
+        separator $c02
         #                   border  background  text
         focused_workspace   $c02    $c02        $c07
         active_workspace    $c01    $c01        $c08
@@ -253,11 +253,10 @@ bar {
     workspace_min_width 40
     position top
     tray_output none
-    # status_command py3status --config ~/.config/i3status/config2
       colors {
         background #00000099
         statusline $c07
-        separator  $c02
+        separator $c02
         #                   border  background  text
         focused_workspace   $c02    $c02        $c07
         active_workspace    $c01    $c01        $c08
@@ -277,7 +276,7 @@ bar {
       colors {
         background #00000099
         statusline $c07
-        separator  $c02
+        separator $c02
         #                   border  background  text
         focused_workspace   $c02    $c02        $c07
         active_workspace    $c01    $c01        $c08
