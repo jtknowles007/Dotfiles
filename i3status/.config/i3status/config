@@ -6,14 +6,19 @@ order += "online_status"
 order += "net_iplist"
 order += "clock"
 
+general {
+    color = '#D89030'
+    color_bad = '#98CE00'
+    color_good = '#133C55'
+    color_degraded = '#CCCCCC'
+}
+
 dropbox {
     on_click 1 = "exec ~/bin/dropbox.sh"
 }
 
 apt_updates {
 on_click 1 = "exec ~/bin/upd.sh"
-color_bad = '#98ce00'
-color_good = '#133c55'
 }
 
 net_iplist {
