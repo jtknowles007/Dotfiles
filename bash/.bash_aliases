@@ -1,15 +1,11 @@
 alias cls='clear'
-alias l1='ls -1' #Display contents of directory with no additional info one file per line
+alias ls='ls -A --color=auto'
 alias ll='ls -lhFA' #Display current directory listing in long format.  Include hidden directories
-alias la='ls -A --color=auto'
-alias l='ls -CF' #Display in columns with file type indicator
-alias lq='ls -Q' #Print contents of directory to STDOUT enclosed by double quotes.
-alias lsl='ls -lhFA | less' #Pipe output of ls to less for viewing large directory listings
 alias cd..='cd ..' #Change directory even if you forget the space
 alias ..='cd ..' #Move up one directory with double elipses
 alias ...='cd ../..' #Move up two directories with triple elipses
-alias histg='history | grep' #Quickly search through command history histg [keyword]
 alias grep='grep --color=auto' #Add color to grep output
+alias histg='history | grep' #Quickly search through command history histg [keyword]
 alias svim='sudo vim'
 alias install='sudo apt install'
 alias remove='sudo apt remove'
