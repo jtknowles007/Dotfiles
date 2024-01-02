@@ -10,7 +10,7 @@ general {
     color = '#D89030'
     color_bad = '#98CE00'
     color_good = '#133C55'
-    color_degraded = '#CCCCCC'
+    color_degraded = '#98CE00'
 }
 
 dropbox {
