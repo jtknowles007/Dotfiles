@@ -1,0 +1,40 @@
+! Mycolors Theme
+! by John Knowles
+! Color selection and names generated
+! at https://coolors.co
+! 
+*.foreground:   #ffffff 
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #000000
+*.color8:       #7ea3cc
+
+! red
+*.color1:       #133c55
+*.color9:       #795838
+
+! green
+*.color2:       #304830
+*.color10:      #98ce00
+
+! yellow
+*.color3:       #f4b942
+*.color11:      #acbea3
+
+! blue
+*.color4:       #a90f0f
+*.color12:      #609060
+
+! magenta
+*.color5:       #bcaf9c
+*.color13:      #dbd8ae
+
+! cyan
+*.color6:       #50a2a7
+*.color14:      #ce5374
+
+! white
+*.color7:       #d89030
+*.color15:      #ffffff

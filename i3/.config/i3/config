@@ -38,6 +38,9 @@ set_from_resource $c15 color15
 font pango:Jetbrains Mono Normal 14
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id compton
+exec --no-startup-id conky -c ~/.config/conky/Visions/.conkyrc
+exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
+exec --no-startup-id alsactl --file ~/.config/asound.state restore
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/bin/lock.sh --nofork
 exec --no-startup-id nm-applet
