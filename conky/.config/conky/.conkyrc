@@ -1,0 +1,41 @@
+conky.config = {
+alignment='top_right',
+background=false,
+border_width=0,
+border_inner_margin=0,
+double_buffer=true,
+no_buffers=true,
+draw_graph_borders=true,
+draw_outline=false,
+draw_shades=false,
+extra_newline=false,
+update_interval=1.0,
+draw_shades=true,
+draw_borders=false,
+gap_x=3860,
+gap_y=20,
+minimum_height=200,
+maximum_width=550,
+minimum_width=550,
+own_window=true,
+own_window_class='Conky',
+own_window_type='override',
+own_window_transparent=true,
+own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
+out_to_console=false,
+out_to_ncurses=false,
+out_to_stderr=false,
+out_to_x=true,
+use_xft = true,
+color1 = '#98ce00',
+color0 = '#ffffff',
+color2 = '#acbea3',
+}
+conky.text = [[
+${font TimeBurner:size=96}${color0}${alignc}${time %I:%M %p}${font}${color}
+${font TimeBurner:size=28}${color0}${voffset 30}${alignc}${time %B %d, %Y}${font}${color}
+${font TimeBurner:size=18}${color0}
+${execpi 300 ~/.config/conky/weather.py}
+${voffset 36}
+]];
+
