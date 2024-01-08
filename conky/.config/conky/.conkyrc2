@@ -1,0 +1,64 @@
+conky.config = {
+alignment='top_left',
+background=true,
+border_width=0,
+border_inner_margin=0,
+double_buffer=true,
+no_buffers=true,
+
+draw_outline=false,
+draw_shades=false,
+extra_newline=false,
+update_interval=1.0,
+draw_shades=true,
+draw_borders=false,
+gap_x=-3820,
+gap_y=40,
+minimum_height=1020,
+maximum_width=300,
+minimum_width=300,
+own_window=true,
+own_window_class='Conky',
+own_window_type='override',
+own_window_transparent=true,
+own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
+out_to_console=false,
+out_to_ncurses=false,
+out_to_stderr=false,
+out_to_x=true,
+use_xft = true,
+font ='TimeBurner:size=12',
+default_color = '#aaaaaa',
+color1 = '#98ce00',
+color0 = '#ffffff',
+color2 = '#acbea3',
+}
+conky.text = [[
+${color1}SYSTEM ${hr 1}${color}
+Machine:${alignr}${nodename_short}
+Distribution:${alignr}${distribution} (${machine})
+Kernel:${alignr}$kernel
+Uptime:${alignr}$uptime_short
+
+${color1}NETWORK ${hr 1}${color}
+Gateway:${alignr}${gw_iface}
+Gateway IP:${alignr}${gw_ip}
+Local IP:${alignr}${addr enp3s0}
+Public IP:${alignr}${execi 60 curl ipinfo.io/ip}
+
+${if_match "${addr enp3s0}"!="No Address"}Download:${alignr}${downspeedf enp3s0}k/s${endif}
+${downspeedgraph enp3s0 10,300 ADFF2F 32CD32}
+Upload:${alignr}${upspeedf enp3s0}k/s
+${upspeedgraph enp3s0 10,300  FF0000 8B0000}
+
+${color1}HDD ${hr 1}${color}
+Home:${alignr}${fs_used /home} / ${fs_size /home}
+${fs_bar /home}
+PhotoVideoMain:${alignr}${fs_used /media/PhotoVideoMain} / ${fs_size /media/PhotoVideoMain}
+${fs_bar /media/PhotoVideoMain}
+
+${color1}MEMORY ${hr 1}${color}
+RAM:${alignr} $mem / $memmax
+$membar
+]];
+
