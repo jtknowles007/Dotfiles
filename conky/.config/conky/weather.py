@@ -21,7 +21,7 @@ for i in range(5):
     next_index = (todayindex + i)%7
     result.append((weekdays[next_index]))
 
-weatherurl = ("https://api.openweathermap.org/data/2.5/weather?zip={},us&units=imperial&appid={}".format(zipcode,weatherkey))
+weatherurl = ("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&units=imperial&appid={}".format(latitude,longitude,weatherkey))
 weatherdata = pm.getjson(weatherurl)
 current = round(weatherdata['main']['temp'])
 icon = weatherdata['weather'][0]['icon']
@@ -29,20 +29,20 @@ iconpath = path + icon + filetype
 
 forecasturl = ("https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&units=imperial&appid={}".format(latitude,longitude,weatherkey))
 forecastdata = pm.getjson(forecasturl)
-forecast1 = round(forecastdata['list'][2]['main']['temp'])
-icon1 = forecastdata['list'][2]['weather'][0]['icon']
+forecast1 = round(forecastdata['list'][6]['main']['temp'])
+icon1 = forecastdata['list'][6]['weather'][0]['icon']
 iconpath1 = path+icon1+filetype
 
-forecast2 = round(forecastdata['list'][10]['main']['temp'])
-icon2 = forecastdata['list'][10]['weather'][0]['icon']
+forecast2 = round(forecastdata['list'][14]['main']['temp'])
+icon2 = forecastdata['list'][14]['weather'][0]['icon']
 iconpath2 = path+icon2+filetype
 
-forecast3 = round(forecastdata['list'][18]['main']['temp'])
-icon3 = forecastdata['list'][18]['weather'][0]['icon']
+forecast3 = round(forecastdata['list'][22]['main']['temp'])
+icon3 = forecastdata['list'][22]['weather'][0]['icon']
 iconpath3 = path+icon3+filetype
 
-forecast4 = round(forecastdata['list'][26]['main']['temp'])
-icon4 = forecastdata['list'][26]['weather'][0]['icon']
+forecast4 = round(forecastdata['list'][30]['main']['temp'])
+icon4 = forecastdata['list'][30]['weather'][0]['icon']
 iconpath4 = path+icon4+filetype
 
 

@@ -1,6 +1,6 @@
 conky.config = {
 alignment='top_right',
-background=false,
+background=true,
 border_width=0,
 border_inner_margin=0,
 double_buffer=true,
