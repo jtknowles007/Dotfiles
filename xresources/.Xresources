@@ -14,7 +14,7 @@ URxvt.loginShell: true
 URxvt.geometry: 100x50
 URxvt.transparent: false
 URxvt.internalBorder: 15
-URxvt.depth: 24
+URxvt.depth: 32
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.secondaryScroll: true
@@ -24,6 +24,7 @@ URxvt.iso14755: false
 URxvt.buffered: true
 URxvt.shading: 0
 URxvt.fading: 0
+URxvt.background: rgba:0000/0000/0000/dddd
 
 ! Enable Common Extensions
 URxvt.perl-ext-common: default,font-size,url-select
