@@ -32,6 +32,7 @@ default_color = '#aaaaaa',
 color1 = '#98ce00',
 color0 = '#ffffff',
 color2 = '#acbea3',
+color3 = '#000000',
 }
 conky.text = [[
 ${color1}SYSTEM ${hr 1}${color}
@@ -60,5 +61,8 @@ ${fs_bar /media/PhotoVideoMain}
 ${color1}MEMORY ${hr 1}${color}
 RAM:${alignr} $mem / $memmax
 $membar
+
+${color1}QUOTE ${hr 1}${color}
+${execpi 300 ~/.config/conky/quotes.py}
 ]];
 
