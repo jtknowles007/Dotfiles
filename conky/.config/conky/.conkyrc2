@@ -56,6 +56,8 @@ ${if_match "${addr enp3s0}"!="No Address"}Download:${alignr}${downspeedf enp3s0}
 Upload:${alignr}${upspeedf enp3s0}k/s
 
 ${color1}HDD ${hr 1}${color}
+Root:${alignr}${fs_used /} / ${fs_size /}
+${color2}${fs_bar /}${color}
 Home:${alignr}${fs_used /home} / ${fs_size /home}
 ${color2}${fs_bar /home}${color}
 PhotoVideoMain:${alignr}${fs_used /media/PhotoVideoMain} / ${fs_size /media/PhotoVideoMain}
