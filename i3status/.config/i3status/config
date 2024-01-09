@@ -25,7 +25,7 @@ net_iplist {
 	format = '{format_iface}'
 	format_iface = '{iface}:[{ip4}]'
 	color_good = '#98ce00'
-	color_bad = '#133c55'
+	color_bad = '#FF0000'
 }
 
 clock {
