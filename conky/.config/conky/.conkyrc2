@@ -5,7 +5,8 @@ border_width=0,
 border_inner_margin=0,
 double_buffer=true,
 no_buffers=true,
-
+use_spacer='left',
+pad_percents=2,
 draw_outline=false,
 draw_shades=false,
 extra_newline=false,
@@ -31,7 +32,7 @@ font ='TimeBurner:size=12',
 default_color = '#aaaaaa',
 color1 = '#98ce00',
 color0 = '#ffffff',
-color2 = '#acbea3',
+color2 = '#d89030',
 color3 = '#000000',
 }
 conky.text = [[
@@ -41,27 +42,30 @@ Distribution:${alignr}${distribution} (${machine})
 Kernel:${alignr}$kernel
 Uptime:${alignr}$uptime_short
 
+${color1}CPU ${hr 1}${color}
+Processor:${alignr}Intel i7-8700 @3.20GHz
+Load:${alignr}${cpu cpu0}%
+${color2}${cpubar cpu0}${color}
+${hwmon 3 fan 1}
 ${color1}NETWORK ${hr 1}${color}
 Gateway:${alignr}${gw_iface}
 Gateway IP:${alignr}${gw_ip}
 Local IP:${alignr}${addr enp3s0}
 Public IP:${alignr}${execi 60 curl ipinfo.io/ip}
-
 ${if_match "${addr enp3s0}"!="No Address"}Download:${alignr}${downspeedf enp3s0}k/s${endif}
-${downspeedgraph enp3s0 10,300 ADFF2F 32CD32}
 Upload:${alignr}${upspeedf enp3s0}k/s
-${upspeedgraph enp3s0 10,300  FF0000 8B0000}
 
 ${color1}HDD ${hr 1}${color}
 Home:${alignr}${fs_used /home} / ${fs_size /home}
-${fs_bar /home}
+${color2}${fs_bar /home}${color}
 PhotoVideoMain:${alignr}${fs_used /media/PhotoVideoMain} / ${fs_size /media/PhotoVideoMain}
-${fs_bar /media/PhotoVideoMain}
+${color2}${fs_bar /media/PhotoVideoMain}${color}
 
 ${color1}MEMORY ${hr 1}${color}
 RAM:${alignr} $mem / $memmax
-$membar
-
+${color2}$membar${color}
+Swap:${alignr} ${swap} / ${swapmax}
+${color2}${swapbar}${color}
 ${color1}QUOTE ${hr 1}${color}
 ${execpi 300 ~/.config/conky/quotes.py}
 ]];
