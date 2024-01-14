@@ -1,12 +1,14 @@
 #! /usr/bin/env python3
 
-import getjson
+import json
 import textwrap
-url = 'https://api.quotable.io/quotes/random'
-
-feed = getjson.getjson(url)
-quote = feed[0]['content']
-author = feed[0]['author']
-quotewrap = textwrap.fill(quote,35)
+from random import randint
+with open('moviequotes.json','r') as fcc_file:
+    fcc_data=json.load(fcc_file)
+    res = sum(1 for i in fcc_data if type(i)==dict)
+    value=randint(0,res)
+movie = fcc_data[value]['quote']
+source = fcc_data[value]['source']
+quotewrap = textwrap.fill(movie,35)
 print(quotewrap)
-print("- " + author)
+print("- " + source)

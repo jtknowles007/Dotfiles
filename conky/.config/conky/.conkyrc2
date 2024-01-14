@@ -68,7 +68,7 @@ RAM:${alignr} $mem / $memmax
 ${color2}$membar${color}
 Swap:${alignr} ${swap} / ${swapmax}
 ${color2}${swapbar}${color}
-${color1}QUOTE ${hr 1}${color}
+${color1}MOVIE QUOTE ${hr 1}${color}
 ${execpi 300 ~/.config/conky/quotes.py}
 ]];
 
