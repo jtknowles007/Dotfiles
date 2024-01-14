@@ -46,14 +46,12 @@ ${color1}CPU ${hr 1}${color}
 Processor:${alignr}Intel i7-8700 @3.20GHz
 Load:${alignr}${cpu cpu0}%
 ${color2}${cpubar cpu0}${color}
-${hwmon 3 fan 1}
-${color1}NETWORK ${hr 1}${color}
-Gateway:${alignr}${gw_iface}
-Gateway IP:${alignr}${gw_ip}
-Local IP:${alignr}${addr enp3s0}
-Public IP:${alignr}${execi 60 curl ipinfo.io/ip}
-${if_match "${addr enp3s0}"!="No Address"}Download:${alignr}${downspeedf enp3s0}k/s${endif}
-Upload:${alignr}${upspeedf enp3s0}k/s
+
+${color1}MEMORY ${hr 1}${color}
+RAM:${alignr} $mem / $memmax
+${color2}$membar${color}
+Swap:${alignr} ${swap} / ${swapmax}
+${color2}${swapbar}${color}
 
 ${color1}HDD ${hr 1}${color}
 Root:${alignr}${fs_used /} / ${fs_size /}
@@ -63,12 +61,14 @@ ${color2}${fs_bar /home}${color}
 PhotoVideoMain:${alignr}${fs_used /media/PhotoVideoMain} / ${fs_size /media/PhotoVideoMain}
 ${color2}${fs_bar /media/PhotoVideoMain}${color}
 
-${color1}MEMORY ${hr 1}${color}
-RAM:${alignr} $mem / $memmax
-${color2}$membar${color}
-Swap:${alignr} ${swap} / ${swapmax}
-${color2}${swapbar}${color}
+${color1}NETWORK ${hr 1}${color}
+Gateway:${alignr}${gw_iface}
+Gateway IP:${alignr}${gw_ip}
+Local IP:${alignr}${addr enp3s0}
+Public IP:${alignr}${execi 60 curl ipinfo.io/ip}
+${if_match "${addr enp3s0}"!="No Address"}Download:${alignr}${downspeedf enp3s0}k/s${endif}
+Upload:${alignr}${upspeedf enp3s0}k/s
+
 ${color1}MOVIE QUOTE ${hr 1}${color}
 ${execpi 300 ~/.config/conky/quotes.py}
 ]];
-
