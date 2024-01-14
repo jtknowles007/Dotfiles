@@ -14,3 +14,4 @@ alias zsource='source ~/.zshrc'
 # Following alias used to update zsh plugins as needed
 alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 alias weather='ansiweather'
+alias volfix='sudo alsactl --file ~/.config/asound.state restore'
