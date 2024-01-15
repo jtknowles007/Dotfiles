@@ -11,6 +11,4 @@ movie = fcc_data[value]['quote']
 source = fcc_data[value]['source']
 quotewrap = textwrap.fill(movie,35)
 sourcewrap = textwrap.fill(source,35)
-print(quotewrap)
-print("")
-print(sourcewrap)
+print(quotewrap+"\n\n"+sourcewrap)
