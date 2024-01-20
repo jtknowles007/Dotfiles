@@ -20,6 +20,9 @@ set backspace=indent,eol,start
 set nolist
 
 " UI CONFIG
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 set ttimeoutlen=10
 set visualbell
 set noerrorbells
