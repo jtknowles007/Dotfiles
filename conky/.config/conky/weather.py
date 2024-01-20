@@ -29,7 +29,10 @@ iconpath = path + icon + filetype
 
 forecasturl = ("https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&units=imperial&appid={}".format(latitude,longitude,weatherkey))
 forecastdata = pm.getjson(forecasturl)
-forecast1 = round(forecastdata['list'][6]['main']['temp'])
+print(forecastdata)
+
+forecast1 = round(forecastdata['list'][6]['main']['temp_min'])
+forecast1b = round(forecastdata['list'][6]['main']['temp_max'])
 icon1 = forecastdata['list'][6]['weather'][0]['icon']
 iconpath1 = path+icon1+filetype
 
@@ -51,5 +54,5 @@ print("${{image {} -p 124,237 -s 32x32}}".format(iconpath1))
 print("${{image {} -p 224,237 -s 32x32}}".format(iconpath2))
 print("${{image {} -p 324,237 -s 32x32}}".format(iconpath3))
 print("${{image {} -p 424,237 -s 32x32}}".format(iconpath4))
-print("${{goto 60}}${{voffset -150}}${{font Zector:size=20}}{}{}${{goto 160}}{}{}${{goto 260}}{}{}${{goto 360}}{}{}${{goto 460}}{}{}".format(current,symbol,forecast1,symbol,forecast2,symbol,forecast3,symbol,forecast4,symbol))
-print("${{goto 32}}${{voffset -10}}${{font Zector:size=12}}{}${{goto 132}}{}${{goto 232}}{}${{goto 332}}{}${{goto 432}}{}${{font}}".format(result[0],result[1],result[2],result[3],result[4]))
+print("${{goto 60}}${{voffset -150}}${{font Monofur Nerd Font Mono:size=20}}{}{}${{goto 160}}{}{}/{}{}${{goto 260}}{}{}${{goto 360}}{}{}${{goto 460}}{}{}".format(current,symbol,forecast1,symbol,forecast1b,symbol,forecast2,symbol,forecast3,symbol,forecast4,symbol))
+print("${{goto 32}}${{voffset -10}}${{font Monofur Nerd Font Mono:size=12}}Today${{goto 132}}{}${{goto 232}}{}${{goto 332}}{}${{goto 432}}{}${{font}}".format(result[1],result[2],result[3],result[4]))
