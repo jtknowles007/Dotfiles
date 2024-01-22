@@ -1,14 +1,22 @@
 #! /usr/bin/env python3
 
-import json
-import textwrap
+import quoteslist
 from random import randint
-with open('quotes.json','r') as file:
-    data=json.load(file)
-    res = sum(1 for i in data if type(i)==dict)
-    value=randint(0,res)
-movie = data[value]['quote']
-source = data[value]['source']
+import textwrap
+
+# Get list from quoteslist
+quotevar = quoteslist.thevar
+
+# Iterate over dicts within the list; find how many are there,
+# and generate a random number within the count of available quotes
+res = sum(1 for i in quotevar if type(i)==dict)
+value=randint(0,res)
+
+# Variables
+movie = quotevar[value]['quote']
+source = quotevar[value]['source']
 quotewrap = textwrap.fill(movie,35)
 sourcewrap = textwrap.fill(source,35)
+
+# Output
 print(quotewrap+"\n\n"+sourcewrap)
