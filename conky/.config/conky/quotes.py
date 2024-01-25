@@ -15,8 +15,8 @@ value=randint(0,res)
 # Variables
 movie = quotevar[value]['quote']
 source = quotevar[value]['source']
-quotewrap = textwrap.fill(movie,35)
-sourcewrap = textwrap.fill(source,35)
+quotewrap = textwrap.fill(movie,40)
+sourcewrap = textwrap.fill(source,40)
 
 # Output
-print(quotewrap+"\n\n"+sourcewrap)
+print("${font IBM Plex Mono:size=10}" + quotewrap+"\n\n"+sourcewrap)
