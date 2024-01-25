@@ -3,5 +3,7 @@ __pycache__/
 credentials.py
 xkcd*.png
 output.txt
+alert.txt
+nohup.out
 core
 moviequotes.json
