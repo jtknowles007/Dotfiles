@@ -24,7 +24,7 @@ URxvt.iso14755: false
 URxvt.buffered: true
 URxvt.shading: 0
 URxvt.fading: 0
-URxvt.background: rgba:0000/0000/0000/dddd
+URxvt.background: rgba:0000/0000/0000/aaaa
 
 ! Enable Common Extensions
 URxvt.perl-ext-common: default,font-size,url-select
