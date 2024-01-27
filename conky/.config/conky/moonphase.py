@@ -16,4 +16,4 @@ thevar = moonimages+thevar[20:-4]+'.png'
 #with Image.open(thevar) as img:
 #    img.load()
 #    img.show()
-print("${{image {} -p 220,310 -s 60x60}}".format(thevar))
+print("${{image {} -p 225,450 -s 60x60}}".format(thevar))
