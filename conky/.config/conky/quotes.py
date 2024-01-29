@@ -15,8 +15,12 @@ value=randint(0,res)
 # Variables
 movie = quotevar[value]['quote']
 source = quotevar[value]['source']
+speaker = quotevar[value]['speaker']
+#speaker = quotevar[value]['speaker']
 quotewrap = textwrap.fill(movie,40)
 sourcewrap = textwrap.fill(source,40)
+speakerwrap = textwrap.fill(speaker,40)
 
 # Output
-print("${font IBM Plex Mono:size=10}" + quotewrap+"\n\n"+sourcewrap)
+print("${font IBM Plex Mono:size=10}" + quotewrap+"\n\n"+speakerwrap+"\n"+sourcewrap)
+#print("${font IBM Plex Mono:size=10}" + quotewrap+"\n\n"+sourcewrap)
