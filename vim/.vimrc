@@ -1,8 +1,7 @@
 " GENERAL
 set nocompatible
 set noswapfile
-filetype on
-filetype plugin on
+filetype off
 filetype indent on
 set viminfofile=NONE
 syntax on
@@ -49,6 +48,20 @@ set completeopt=noinsert,menuone,noselect
 set mouse=a
 set splitbelow splitright
 set title
+
+" PLUGIN MANAGER
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'python-mode/python-mode'
+Plugin 'dense-analysis/ale'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'davidhalter/jedi-vim'
+
+
+call vundle#end()
+filetype plugin indent on
 
 " SEARCH
 set ignorecase
