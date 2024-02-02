@@ -27,7 +27,7 @@ for i in range(5):
 
 # Query API and populate variables of interest
 forecasturl = ("https://api.weatherapi.com/v1/forecast.json?key={}&q={} \
-               &days=5&aqi=no&alerts=yes&hour=16".format(weatherkey, zipcode))
+               &days=3&aqi=no&alerts=yes&hour=16".format(weatherkey, zipcode))
 
 forecastdata = pm.getjson(forecasturl)
 currenttemp = str(round(forecastdata['current']['temp_f'])) + symbol
@@ -61,17 +61,17 @@ dayhi = []
 daylo = []
 dayicon = []
 
-for i in range(1, 5):
+for i in range(1, 3):
     thevar = str(round(forecastdata['forecast']['forecastday']
                        [i]['day']['maxtemp_f'])) + symbol
     dayhi.append(thevar)
 
-for i in range(1, 5):
+for i in range(1, 3):
     thevar = str(round(forecastdata['forecast']['forecastday']
                        [i]['day']['mintemp_f'])) + symbol
     daylo.append(thevar)
 
-for i in range(1, 5):
+for i in range(1, 3):
     thevar = (forecastdata['forecast']['forecastday']
               [i]['day']['condition']['icon'])
     theicon = path + "day/" + thevar.rsplit('/', 1)[1]
@@ -128,17 +128,13 @@ print("")
 
 # Forecast Section
 print("${font IBM Plex Mono:size=12}${color1}FORECAST ${hr 1}${color}")
-print("${{image {} -p 0,310 -s 50x50}}${{image {} -p 95,310 -s 50x50}} \
-      ${{image {} -p 190,310 -s 50x50}}${{image {} -p 285,310 -s 50x50}}"
-      .format(dayicon[0], dayicon[1], dayicon[2], dayicon[3]))
+print("${{image {} -p 0,310 -s 50x50}}${{image {} -p 95,310 -s 50x50}}"
+      .format(dayicon[0], dayicon[1]))
 
 print("${{font IBM Plex Mono:size=8}}${{voffset 30}}${{goto 2}}{} / {} \
-      ${{goto 98}}{} / {}${{goto 190}}{} / {}${{goto 285}}{} / {}"
-      .format(dayhi[0], daylo[0], dayhi[1], daylo[1], dayhi[2], daylo[2],
-              dayhi[3], daylo[3]))
+      ${{goto 98}}{} / {}".format(dayhi[0], daylo[0], dayhi[1], daylo[1]))
 
-print("${{goto 5}}{}${{goto 105}}{}${{goto 197}}{}${{goto 290}}{}"
-      .format(result[1], result[2], result[3], result[4]))
+print("${{goto 5}}{}${{goto 105}}{}".format(result[1], result[2]))
 
 print("${font IBM Plex Mono:size=12}")
 
