@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
+
 import getjson as pm
 import datetime as dt
+
 import credentials
 
 weatherkey = credentials.weatherapi
@@ -18,6 +20,7 @@ todayindex = today.weekday()
 weekdays = ("Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday", "Sunday")
 result = []
+
 for i in range(5):
     next_index = (todayindex + i) % 7
     result.append((weekdays[next_index]))
@@ -27,13 +30,10 @@ forecasturl = ("https://api.weatherapi.com/v1/forecast.json?key={}&q={} \
                &days=5&aqi=no&alerts=yes&hour=16".format(weatherkey, zipcode))
 
 forecastdata = pm.getjson(forecasturl)
-
 currenttemp = str(round(forecastdata['current']['temp_f'])) + symbol
 feelslike = str(round(forecastdata['current']['feelslike_f'])) + symbol
-
 lo = str(round(forecastdata['forecast']['forecastday'][0]['day']
                ['mintemp_f'])) + symbol
-
 hi = str(round(forecastdata['forecast']['forecastday'][0]['day']
                ['maxtemp_f'])) + symbol
 
@@ -77,13 +77,10 @@ for i in range(1, 5):
     theicon = path + "day/" + thevar.rsplit('/', 1)[1]
     dayicon.append(theicon)
 
-"""
+# Determine if there is an alert for today and send alert to a text file
+# for alert.py script to handle.  If there are no alerts for today, clear
+# the text file.
 
-Determine if there is an alert for today and send alert to a text file
-for alert.py script to handle.  If there are no alerts for today, clear
-the text file.
-
-"""
 if len(forecastdata['alerts']['alert']) != 0:
     desc = forecastdata['alerts']['alert'][0]['desc']
     desc = desc.replace('\n', ' ')
@@ -116,8 +113,8 @@ print("${{image {} -p 200,60 -s 100x100}}".format(icon))
 print("${{voffset 20}}${{font IBM Plex Mono:size=36}}{}{}"
       .format(currenttemp, font))
 
-print("${{voffset 30}}Feels like:${{offset 5}}{}${{goto 200}}Wind: \
-      ${{offset 5}}{} {}".format(feelslike, winddirection, windspeed))
+print(("${{voffset 30}}Feels like:${{offset 5}}{}${{goto 200}}Wind:"
+      "${{offset 5}}{} {}").format(feelslike, winddirection, windspeed))
 
 print("Hi/Lo:${{offset 5}}{}/{}${{goto 200}}Gusts:${{offset 5}}{}"
       .format(hi, lo, windgust))
