@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 moonphaseURL = 'https://www.moongiant.com/phase/today'
-moonimages = '/home/john/.config/conky/north_moon/'
+moonimages = '/home/john/.config/conky/moonicons/'
 moonpage = requests.get(moonphaseURL)
 moonsoup = BeautifulSoup(moonpage.content, "html.parser")
 moontoday = moonsoup.find(id='today_')
