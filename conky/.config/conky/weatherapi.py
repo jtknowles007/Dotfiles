@@ -1,146 +1,146 @@
 #! /usr/bin/env python3
-
-import getjson as pm
+""" Receives weather report from weatherapi and formats output for Conky"""
 import datetime as dt
+import getjson as pm
 
 import credentials
 
-weatherkey = credentials.weatherapi
-zipcode = 46013
-symbol = "°"
-system = "F"
-speed = "mph"
-path = "~/.config/conky/weatherapicons/"
-font = "${font IBM Plex Mono:size=12}"
-font2 = "${font IBM Plex Mono:size=16}"
+WEATHER_KEY = credentials.weatherapi
+ZIPCODE = 46013
+SYMBOL = "°"
+SYSTEM = "F"
+SPEED = "mph"
+PATH = "~/.config/conky/weatherapicons/"
 
 # Determine today and the next four days
-today = dt.datetime.today()
-todayindex = today.weekday()
-weekdays = ("Monday", "Tuesday", "Wednesday", "Thursday",
+TODAY = dt.datetime.today()
+TODAY_INDEX = TODAY.weekday()
+WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday", "Sunday")
-result = []
+RESULT = []
 
 for i in range(5):
-    next_index = (todayindex + i) % 7
-    result.append((weekdays[next_index]))
+    NEXT_INDEX = (TODAY_INDEX + i) % 7
+    RESULT.append((WEEKDAYS[NEXT_INDEX]))
 
 # Query API and populate variables of interest
-forecasturl = ("https://api.weatherapi.com/v1/forecast.json?key={}&q={} \
-               &days=3&aqi=no&alerts=yes&hour=16".format(weatherkey, zipcode))
+FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json?key={}&q={} \
+        &days=3&aqi=no&alerts=yes&hour=16".format(WEATHER_KEY, ZIPCODE)
 
-forecastdata = pm.getjson(forecasturl)
-currenttemp = str(round(forecastdata['current']['temp_f'])) + symbol
-feelslike = str(round(forecastdata['current']['feelslike_f'])) + symbol
-lo = str(round(forecastdata['forecast']['forecastday'][0]['day']
-               ['mintemp_f'])) + symbol
-hi = str(round(forecastdata['forecast']['forecastday'][0]['day']
-               ['maxtemp_f'])) + symbol
 
-windspeed = str(round(forecastdata['current']['wind_mph'])) + speed
-winddirection = forecastdata['current']['wind_dir']
-windgust = str(round(forecastdata['current']['gust_mph'])) + speed
+FORECAST_DATA = pm.getjson(FORECAST_URL)
+CURRENT_TEMP = str(round(FORECAST_DATA['current']['temp_f'])) + SYMBOL
+FEELS_LIKE = str(round(FORECAST_DATA['current']['feelslike_f'])) + SYMBOL
+LO_TEMP = str(round(FORECAST_DATA['forecast']['forecastday'][0]['day']
+               ['mintemp_f'])) + SYMBOL
+HI_TEMP = str(round(FORECAST_DATA['forecast']['forecastday'][0]['day']
+               ['maxtemp_f'])) + SYMBOL
 
-humidity = str(forecastdata['current']['humidity']) + "%"
-rain = str(round(forecastdata['forecast']['forecastday'][0]['day']
+WIND_SPEED = str(round(FORECAST_DATA['current']['wind_mph'])) + SPEED
+WIND_DIRECTION = FORECAST_DATA['current']['wind_dir']
+WIND_GUST = str(round(FORECAST_DATA['current']['gust_mph'])) + SPEED
+
+HUMIDITY= str(FORECAST_DATA['current']['humidity']) + "%"
+RAIN = str(round(FORECAST_DATA['forecast']['forecastday'][0]['day']
                  ['totalprecip_in'], 1)) + "\""
 
-clouds = str(forecastdata['current']['cloud']) + "%"
-visibility = str(round(forecastdata['current']['vis_miles'])) + " mi"
+CLOUDS = str(FORECAST_DATA['current']['cloud']) + "%"
+VISIBILITY = str(round(FORECAST_DATA['current']['vis_miles'])) + " mi"
 
-isday = forecastdata['current']['is_day']
-icon = forecastdata['current']['condition']['icon']
+IS_DAY = FORECAST_DATA['current']['is_day']
+ICON = FORECAST_DATA['current']['condition']['icon']
 
-sunrise = forecastdata['forecast']['forecastday'][0]['astro']['sunrise']
-sunset = forecastdata['forecast']['forecastday'][0]['astro']['sunset']
-moonrise = forecastdata['forecast']['forecastday'][0]['astro']['moonrise']
-moonset = forecastdata['forecast']['forecastday'][0]['astro']['moonset']
+SUNRISE = FORECAST_DATA['forecast']['forecastday'][0]['astro']['sunrise']
+SUNSET = FORECAST_DATA['forecast']['forecastday'][0]['astro']['sunset']
+MOONRISE = FORECAST_DATA['forecast']['forecastday'][0]['astro']['moonrise']
+MOONSET = FORECAST_DATA['forecast']['forecastday'][0]['astro']['moonset']
 
 # Populate variables with 4 day forecast values
-dayhi = []
-daylo = []
-dayicon = []
+DAY_HI = []
+DAY_LO = []
+DAY_ICON = []
 
 for i in range(1, 3):
-    thevar = str(round(forecastdata['forecast']['forecastday']
-                       [i]['day']['maxtemp_f'])) + symbol
-    dayhi.append(thevar)
+    MAX_TEMP = str(round(FORECAST_DATA['forecast']['forecastday']
+                        [i]['day']['maxtemp_f'])) + SYMBOL
+    DAY_HI.append(MAX_TEMP)
 
 for i in range(1, 3):
-    thevar = str(round(forecastdata['forecast']['forecastday']
-                       [i]['day']['mintemp_f'])) + symbol
-    daylo.append(thevar)
+    MIN_TEMP = str(round(FORECAST_DATA['forecast']['forecastday']
+                        [i]['day']['mintemp_f'])) + SYMBOL
+    DAY_LO.append(MIN_TEMP)
 
 for i in range(1, 3):
-    thevar = (forecastdata['forecast']['forecastday']
+    FULL_ICON = (FORECAST_DATA['forecast']['forecastday']
               [i]['day']['condition']['icon'])
-    theicon = path + "day/" + thevar.rsplit('/', 1)[1]
-    dayicon.append(theicon)
+    NEW_ICON = PATH + "day/" + FULL_ICON.rsplit('/', 1)[1]
+    DAY_ICON.append(NEW_ICON)
 
-# Determine if there is an alert for today and send alert to a text file
+# Determine if there is an alert for TODAY and send alert to a text file
 # for alert.py script to handle.  If there are no alerts for today, clear
 # the text file.
 
-if len(forecastdata['alerts']['alert']) != 0:
-    desc = forecastdata['alerts']['alert'][0]['desc']
-    desc = desc.replace('\n', ' ')
-    desc = desc.replace(' * ', '\n\n')
-    desc = desc.replace('...', '\n')
-    myalert = open('alert.txt', 'w')
-    myalert.write("${color1}ALERTS ${hr 1}${color}${voffset -20}")
-    myalert.write(desc)
-    myalert.close
-else:
-    desc = ""
-    myalert = open('alert.txt', 'w')
-    myalert.write(desc)
-    myalert.close
+if len(FORECAST_DATA['alerts']['alert']) != 0:
+    ALERT_DESCRIPTION = ""
+    ALERT_DESCRIPTOIN = FORECAST_DATA['alerts']['alert'][0]['desc']
+    ALERT_DESCRIPTION = ALERT_DESCRIPTION.replace('\n', ' ')
+    ALERT_DESCRIPTION = ALERT_DESCRIPTION.replace(' * ', '\n\n')
+    ALERT_DESCRIPTION = ALERT_DESCRIPTION.replace('...', '\n')
 
-# Determine if it is day or night and select the appropriate icon set
-if isday == 1:
-    daynight = "day/"
+    with open('alert.txt', 'w', encoding='utf-8') as MY_FILE:
+        MY_FILE.write("${color1}ALERTS ${hr 1}${color}${voffset -20}")
+        MY_FILE.write(ALERT_DESCRIPTION)
 else:
-    daynight = "night/"
+    ALERT_DESCRIPTION = ""
+    with open('alert.txt', 'w', encoding='utf-8') as MY_FILE:
+        MY_FILE.write(ALERT_DESCRIPTION)
 
-icon = path + daynight + icon.rsplit('/', 1)[1]
+# Determine if it is day or night and select the appropriate ICON set
+if IS_DAY == 1:
+    DAY_NIGHT = "day/"
+else:
+    DAY_NIGHT = "night/"
+
+ICON = PATH + DAY_NIGHT + ICON.rsplit('/', 1)[1]
 
 # Output to conky
 #
 # Weather Section
 print("${font IBM Plex Mono:size=12}${color1}WEATHER ${hr 1}${color}")
-print("${{image {} -p 200,60 -s 100x100}}".format(icon))
+print("${{image {} -p 200,60 -s 100x100}}".format(ICON))
 
-print("${{voffset 20}}${{font IBM Plex Mono:size=36}}{}{}"
-      .format(currenttemp, font))
+print("${{voffset 20}}${{font IBM Plex Mono:size=36}}{} \
+      ${{font IBM Plex Mono:size=12}}".format(CURRENT_TEMP))
 
 print(("${{voffset 30}}Feels like:${{offset 5}}{}${{goto 200}}Wind:"
-      "${{offset 5}}{} {}").format(feelslike, winddirection, windspeed))
+      "${{offset 5}}{} {}").format(FEELS_LIKE, WIND_DIRECTION, WIND_SPEED))
 
 print("Hi/Lo:${{offset 5}}{}/{}${{goto 200}}Gusts:${{offset 5}}{}"
-      .format(hi, lo, windgust))
+      .format(HI_TEMP, LO_TEMP, WIND_GUST))
 
-print("Precip:${{offset 5}}{}${{goto 200}}Clouds:${{offset 5}}{}"
-      .format(rain, clouds))
+print("Precip:${{offset 5}}{}${{goto 200}}CLOUDS:${{offset 5}}{}"
+      .format(RAIN, CLOUDS))
 
 print("Humidity:${{offset 5}}{}${{goto 200}}Vis:${{offset 5}}{}"
-      .format(humidity, visibility))
+      .format(HUMIDITY, VISIBILITY))
 print("")
 
 # Forecast Section
 print("${font IBM Plex Mono:size=12}${color1}FORECAST ${hr 1}${color}")
 print("${{image {} -p 0,310 -s 50x50}}${{image {} -p 95,310 -s 50x50}}"
-      .format(dayicon[0], dayicon[1]))
+      .format(DAY_ICON[0], DAY_ICON[1]))
 
-print("${{font IBM Plex Mono:size=8}}${{voffset 30}}${{goto 2}}{} / {} \
-      ${{goto 98}}{} / {}".format(dayhi[0], daylo[0], dayhi[1], daylo[1]))
+print("${{font IBM Plex Mono:size=8}}${{voffset 30}}${{goto 2}} \
+      {} / {}${{goto 98}}{} / {}".format(DAY_HI[0], DAY_LO[0], \
+                                         DAY_HI[1], DAY_LO[1]))
 
-print("${{goto 5}}{}${{goto 105}}{}".format(result[1], result[2]))
+print("${{goto 5}}{}${{goto 105}}{}".format(RESULT[1], RESULT[2]))
 
 print("${font IBM Plex Mono:size=12}")
 
 # Astronomical Section
 print("${color1}ASTRONOMICAL ${hr 1}${color}")
-print("Sunrise:${{offset 5}}{}".format(sunrise))
-print("Sunset:${{offset 5}}{}".format(sunset))
-print("Moonrise:${{offset 5}}{}".format(moonrise))
-print("Moonset:${{offset 5}}{}".format(moonset))
+print("Sunrise:${{offset 5}}{}".format(SUNRISE))
+print("Sunset:${{offset 5}}{}".format(SUNSET))
+print("Moonrise:${{offset 5}}{}".format(MOONRISE))
+print("Moonset:${{offset 5}}{}".format(MOONSET))
