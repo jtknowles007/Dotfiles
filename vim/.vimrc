@@ -1,12 +1,20 @@
-" GENERAL
-set nocompatible
-set noswapfile
-filetype off
-filetype indent on
-set viminfofile=NONE
-syntax on
+if has('packages')
+    let package_dir = '~/.vim/pack/plugins/start'
+    packadd! lightline
+    packadd! ale
+    packadd! indentpython.vim
+    packadd! vim-fugitive
+    packadd! jedi-vim
+    packadd! vim-gitbranch
+    packadd! vim-gitgutter
+    packadd! lightline-ale
+endif
+packloadall
 
-" SPACES TABS AND SPECIAL CHARACTERS
+set noswapfile
+filetype plugin indent on
+syntax on
+set viminfofile=NONE
 set tabstop=4
 set expandtab
 set softtabstop=4
@@ -17,8 +25,6 @@ set smartindent
 set smarttab
 set backspace=indent,eol,start
 set nolist
-
-" UI CONFIG
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
@@ -48,69 +54,26 @@ set completeopt=noinsert,menuone,noselect
 set mouse=a
 set splitbelow splitright
 set title
-
-" PLUGIN MANAGER
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'python-mode/python-mode'
-Plugin 'dense-analysis/ale'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'davidhalter/jedi-vim'
-
-
-call vundle#end()
-filetype plugin indent on
-
-" SEARCH
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-
-" FOLDING
 set foldmethod=indent
 set foldenable
 set foldlevelstart=10
-
-" CUSTOM LEADER
 let mapleader=","
-
-" NAVIGATE SPLITS WITH ARROW KEYS
-map <up> <C-w><up>
-map <down> <C-w><down>
-map <left> <C-w><left>
-map <right> <C-w><right>
-
-" NAVIGATE BY DISPLAY LINE NOT PHYSICAL LINE
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-
-" FOLDING
 nnoremap <space> za
-
-" CUSTOM FUNCTION MAPPING
-nnoremap <leader>l :call ToggleNumber()<CR>
-nnoremap <leader>w :set list!<CR>
-nnoremap <leader>s :set spell!<CR>
-
-" COMMENT BLOCK
 map <F2> :s/^\(.*\)$/#\1/g<CR>
 map <F3> :s/^#//g<CR>
-
-" HIGHLIGHTING
 hi clear SpellBad
 hi SpellBad cterm=underline,bold, ctermfg=red
-
-" SAVE LOCATIONS
 set backupdir=.backup/,~/.backup/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 set directory=.swp/~/.swp/,/tmp//
-
-" CUSTOM FUNCTIONS
 function! ToggleNumber()
 	if(&relativenumber ==1)
 		set norelativenumber
@@ -119,3 +82,32 @@ function! ToggleNumber()
 		set relativenumber
 	endif
 endfunction
+let g:ale_linters={'python': ['Mypy','pylint']}
+let g:lightline = {}
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.active = {
+            \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+            \            [ 'lineinfo' ],
+	        \            [ 'fileformat', 'fileencoding', 'filetype'] ],
+            \ 'left': [ ['mode','paste' ],
+            \ [ 'gitbranch', 'readonly', 'filename', 'modified' ]]
+            \ }
+
+let g:lightline.component_function = {'gitbranch':'gitbranch#name'}
+
