@@ -1,34 +1,39 @@
 #! /usr/bin/env python3
+""" Import alert text from weatherapi and format for Conky """
+import os
+import sys
 import textwrap
 
+# Check if file exists and is empty.  If so, exit.
+if os.path.isfile('alert.txt') and os.path.getsize('alert.txt') == 0:
+    sys.exit()
 # Open alert.txt file and read into variable
-myalert = open('alert.txt', 'r')
-alert = myalert.read()
-myalert.close
+with open('alert.txt', 'r', encoding = 'utf-8') as MY_FILE:
+    ALERT = MY_FILE.read()
 
 # Split lines and determine position of items of interest
 # within the list variable
-mylines = alert.splitlines()
-what = mylines.index('WHAT') + 1
-impact = mylines.index('IMPACTS') + 1
+MY_LINES = ALERT.splitlines()
+MY_WHAT = MY_LINES.index('WHAT') + 1
+MY_IMPACT = MY_LINES.index('IMPACTS') + 1
 
 # Assign items of interest to variables
-whattext = mylines[what]
-impacttext = mylines[impact]
+WHAT_TEXT = MY_LINES[MY_WHAT]
+IMPACT_TEXT = MY_LINES[MY_IMPACT]
 
 # Assign alert title to variable
-title = textwrap.fill(mylines[1], width=35)
+TITLE = textwrap.fill(MY_LINES[1], width=35)
 
 # Join items of interest into one text block and wrap text
 # to fit conky window
-fullist = []
-fullist.append(whattext)
-fullist.append(impacttext)
+FULL_LIST = []
+FULL_LIST.append(WHAT_TEXT)
+FULL_LIST.append(IMPACT_TEXT)
 
-mergedtext = " ".join(str(element) for element in fullist)
-wrappedtext = textwrap.fill(mergedtext, width=35)
+MERGED_TEXT = " ".join(str(element) for element in FULL_LIST)
+WRAPPED_TEXT = textwrap.fill(MERGED_TEXT, width=35)
 
 # Output to Conky
-print(mylines[0] + "\n")
-print(title + "\n")
-print(wrappedtext)
+print(MY_LINES[0] + "\n")
+print(TITLE + "\n")
+print(WRAPPED_TEXT)
