@@ -1,25 +1,26 @@
 #! /usr/bin/env python3
+""" Read quotes from list and output to Conky """
 
-import quoteslist
 from random import randint
 import textwrap
+import quoteslist
 
 # Get list from quoteslist
-quotevar = quoteslist.thevar
+QUOTE_LIST = quoteslist.thevar
 
 # Iterate over dicts within the list; find how many are there,
 # and generate a random number within the count of available quotes
-res = sum(1 for i in quotevar if type(i) == dict)
-value=randint(0, res)
+RESULT = sum(1 for i in QUOTE_LIST if isinstance(i,dict))
+INDEX=randint(0, RESULT)
 
 # Variables
-movie = quotevar[value]['quote']
-source = quotevar[value]['source']
-speaker = quotevar[value]['speaker']
-quotewrap = textwrap.fill(movie, 40)
-sourcewrap = textwrap.fill(source, 40)
-speakerwrap = textwrap.fill(speaker, 40)
+MOVIE_QUOTE = QUOTE_LIST[INDEX]['quote']
+MOVIE_TITLE = QUOTE_LIST[INDEX]['source']
+MOVIE_SPEAKER = QUOTE_LIST[INDEX]['speaker']
+QUOTE_WRAP = textwrap.fill(MOVIE_QUOTE, 40)
+TITLE_WRAP = textwrap.fill(MOVIE_TITLE, 40)
+SPEAKER_WRAP = textwrap.fill(MOVIE_SPEAKER, 40)
 
 # Output
-print("${font IBM Plex Mono:size=10}" + quotewrap + "\n\n" +
-      speakerwrap + "\n" + sourcewrap)
+print("${font IBM Plex Mono:size=10}" + QUOTE_WRAP + "\n\n" +
+      SPEAKER_WRAP + "\n" + TITLE_WRAP)
