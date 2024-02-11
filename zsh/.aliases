@@ -1,9 +1,13 @@
+
 alias cls='clear'
+
 alias ls='ls -A --color=auto'
 alias ll='ls -lhFA'
+
 alias md='mkdir -p'
 alias rd='rmdir'
 alias d='dirs -v'
+
 alias ht='htop'
 alias grep='grep --color=auto'
 alias svim='sudo vim'
@@ -11,7 +15,15 @@ alias ping='ping -c 5'
 alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown -h now'
 alias zsource='source ~/.zshrc'
+
 # Following alias used to update zsh plugins as needed
 alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
+
 alias weather='ansiweather'
 alias volfix='sudo alsactl --file ~/.config/asound.state restore'
+
+# Apt Aliases
+alias update='sudo apt update'
+alias upgradable='apt list --upgradable'
+alias upgrade='sudo apt upgrade'
+
