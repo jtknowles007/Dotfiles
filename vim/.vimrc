@@ -61,7 +61,13 @@ set hlsearch
 set foldmethod=indent
 set foldenable
 set foldlevelstart=10
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=10000
+set undoreload=100000
 let mapleader=","
+highlight ColorColumn ctermbg=233 ctermfg=93
+let &colorcolumn="80,".join(range(120,999),",")
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -110,4 +116,3 @@ let g:lightline.active = {
             \ }
 
 let g:lightline.component_function = {'gitbranch':'gitbranch#name'}
-
