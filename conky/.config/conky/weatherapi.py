@@ -55,7 +55,7 @@ SUNSET = FORECAST_DATA['forecast']['forecastday'][0]['astro']['sunset']
 MOONRISE = FORECAST_DATA['forecast']['forecastday'][0]['astro']['moonrise']
 MOONSET = FORECAST_DATA['forecast']['forecastday'][0]['astro']['moonset']
 
-# Populate variables with 4 day forecast values
+# Populate variables with 2 day forecast values
 DAY_HI = []
 DAY_LO = []
 DAY_ICON = []
@@ -127,16 +127,12 @@ print("")
 
 # Forecast Section
 print("${font IBM Plex Mono:size=12}${color1}FORECAST ${hr 1}${color}")
-print("${{image {} -p 0,310 -s 50x50}}${{image {} -p 95,310 -s 50x50}}"
+print("${{image {} -p 0,315 -s 80x80}}${{image {} -p 175,315 -s 80x80}}"
       .format(DAY_ICON[0], DAY_ICON[1]))
-
-print("${{font IBM Plex Mono:size=8}}${{voffset 30}}${{goto 2}} \
-      {} / {}${{goto 98}}{} / {}".format(DAY_HI[0], DAY_LO[0], \
-                                         DAY_HI[1], DAY_LO[1]))
-
-print("${{goto 5}}{}${{goto 105}}{}".format(RESULT[1], RESULT[2]))
-
-print("${font IBM Plex Mono:size=12}")
+print("${{goto 75}}{}${{goto 250}}{}".format(RESULT[1], RESULT[2]))
+print("${{voffset 0}}${{goto 65}} {} / {}${{goto 250}}{} / {}"
+      .format(DAY_HI[0], DAY_LO[0], DAY_HI[1], DAY_LO[1]))
+print("\n")
 
 # Astronomical Section
 print("${color1}ASTRONOMICAL ${hr 1}${color}")
