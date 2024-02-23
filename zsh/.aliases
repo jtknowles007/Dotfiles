@@ -25,5 +25,7 @@ alias volfix='sudo alsactl --file ~/.config/asound.state restore'
 # Apt Aliases
 alias update='sudo apt update'
 alias upgradable='apt list --upgradable'
-alias upgrade='sudo apt upgrade'
+alias upgrade='sudo apt upgrade -y'
 
+# Vimwiki
+alias vimwiki='vim -c VimwikiIndex'
