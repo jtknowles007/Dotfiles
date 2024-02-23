@@ -53,12 +53,12 @@ focus_follows_mouse no
 
 # Application Keyboard Assignments
 bindsym $mod+f exec --no-startup-id firefox; focus
-bindsym $mod+t exec --no-startup-id ~/bin/trilium; focus
+bindsym $mod+t exec --no-startup-id ~/.joplin/Joplin.AppImage --no-sandbox %u
 bindsym $mod+n exec --no-startup-id nemo; focus
 bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
 bindsym $mod+Return exec --no-startup-id $term; focus
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym Print exec --no-startup-id flameshot; focus
+bindsym Print exec --no-startup-id flameshot gui; focus
 
 # Auto start
 exec --no-startup-id nitrogen --restore
