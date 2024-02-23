@@ -1,3 +1,5 @@
+set nocompatible
+let mapleader=","
 if has('packages')
     let package_dir = '~/.vim/pack/plugins/start'
     packadd! lightline
@@ -8,6 +10,8 @@ if has('packages')
     packadd! vim-gitbranch
     packadd! vim-gitgutter
     packadd! lightline-ale
+    packadd! nerdtree
+    packadd! vimwiki
 endif
 packloadall
 
@@ -65,7 +69,6 @@ set undodir=~/.vim/undodir
 set undofile
 set undolevels=10000
 set undoreload=100000
-let mapleader=","
 highlight ColorColumn ctermbg=233 ctermfg=93
 let &colorcolumn="80,".join(range(120,999),",")
 nnoremap j gj
@@ -73,6 +76,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 nnoremap <space> za
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 map <F2> :s/^\(.*\)$/#\1/g<CR>
 map <F3> :s/^#//g<CR>
 hi clear SpellBad
@@ -88,6 +95,8 @@ function! ToggleNumber()
 		set relativenumber
 	endif
 endfunction
+let g:vimwiki_list = [{'path':'~/vimwiki/','syntax':'markdown','ext':'md'}]
+let g:vimwiki_global_ext=0
 let g:ale_linters={'python': ['Mypy','pylint']}
 let g:lightline = {}
 
