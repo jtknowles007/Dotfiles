@@ -29,3 +29,8 @@ alias upgrade='sudo apt upgrade -y'
 
 # Vimwiki
 alias vimwiki='vim -c VimwikiIndex'
+
+# RecalBox
+alias rbmount='sshfs root@recalbox:/recalbox/share ~/RecalboxShare'
+alias rbunmount='fusermount3 -u ~/RecalboxShare'
+alias rbssh='ssh -t root@recalbox "cd /recalbox/share ; bash --login"'
