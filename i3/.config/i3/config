@@ -38,7 +38,7 @@ set_from_resource $c15 color15
 font pango:Jetbrains Mono Normal 14
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id compton
-exec --no-startup-id conky -c ~/.config/conky/.conkyrc
+exec --no-startup-id conkystart
 exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
 exec --no-startup-id alsactl --file ~/.config/asound.state restore
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -48,7 +48,7 @@ exec --no-startup-id nm-applet
 # Floating
 floating_modifier $mod
 
-for_window [class="VirtualBox Machine"] floating enable
+# for_window [class="VirtualBox Machine"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="About"] floating enable
