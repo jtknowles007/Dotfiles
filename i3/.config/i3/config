@@ -69,7 +69,10 @@ bindsym Print exec --no-startup-id flameshot gui; focus
 # Auto start
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
+exec --no-startup-id conkystart
+exec --no-startup-id volfix
 exec_always --no-startup-id numlockx on
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
