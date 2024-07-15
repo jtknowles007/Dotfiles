@@ -1,8 +1,8 @@
 
 alias cls='clear'
 
-alias ls='ls -A --color=auto'
-alias ll='ls -lhFA'
+alias ls='ls -AX --color=auto'
+alias ll='ls -lhFAX'
 
 alias md='mkdir -p'
 alias rd='rmdir'
