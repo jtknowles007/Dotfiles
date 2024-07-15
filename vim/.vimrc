@@ -69,8 +69,6 @@ set undodir=~/.vim/undodir
 set undofile
 set undolevels=10000
 set undoreload=100000
-highlight ColorColumn ctermbg=233 ctermfg=93
-let &colorcolumn="80,".join(range(120,999),",")
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
