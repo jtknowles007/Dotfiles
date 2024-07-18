@@ -33,16 +33,16 @@ set_from_resource $c14 color14
 set_from_resource $c15 color15
 
 # Set font
-#font pango:monospace 10
-
 font pango:Jetbrains Mono Normal 14
+
+# Auto start
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id compton
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id conkystart
 exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
 exec --no-startup-id alsactl --file ~/.config/asound.state restore
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/bin/lock.sh --nofork
+exec_always --no-startup-id numlockx on
 exec --no-startup-id nm-applet
 
 # Floating
@@ -65,14 +65,6 @@ bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
 bindsym $mod+Return exec --no-startup-id $term; focus
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym Print exec --no-startup-id flameshot gui; focus
-
-# Auto start
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id nm-applet
-exec --no-startup-id conkystart
-exec --no-startup-id volfix
-exec_always --no-startup-id numlockx on
-
 
 # kill focused window
 bindsym $mod+Shift+q kill
