@@ -44,6 +44,7 @@ exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 -
 exec --no-startup-id alsactl --file ~/.config/asound.state restore
 exec_always --no-startup-id numlockx on
 exec --no-startup-id nm-applet
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Floating
 floating_modifier $mod
@@ -225,5 +226,3 @@ client.placeholder      $c00    $coo    $c10    $c00        $c00
 client.background       $bg
 
 bindsym $mod+r mode "resize"
-
-
