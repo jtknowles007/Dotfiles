@@ -1,22 +1,24 @@
 set nocompatible
+filetype off
 let mapleader=","
-if has('packages')
-    let package_dir = '~/.vim/pack/plugins/start'
-    packadd! lightline
-    packadd! ale
-    packadd! indentpython.vim
-    packadd! vim-fugitive
-    packadd! jedi-vim
-    packadd! vim-gitbranch
-    packadd! vim-gitgutter
-    packadd! lightline-ale
-    packadd! nerdtree
-    packadd! vimwiki
-endif
-packloadall
 
-set noswapfile
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim' "Enable Vundle plugin manager
+Plugin 'preservim/nerdtree' "A tree explorer for vim
+Plugin 'dense-analysis/ale' "Linting (syntax checking and semantic errors)
+Plugin 'tpope/vim-fugitive' "Git plugin
+Plugin 'itchyny/vim-gitbranch' "Returns name of git branch
+Plugin 'airblade/vim-gitgutter' "Shows git diff in the sign column
+Plugin 'davidhalter/jedi-vim' "Python autocompletion
+Plugin 'chrisbra/Colorizer' "Colorize color definitions
+call vundle#end()
 filetype plugin indent on
+ 
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
+set noswapfile
 syntax on
 set viminfofile=NONE
 set tabstop=4
@@ -81,10 +83,11 @@ nnoremap <C-f> :NERDTreeFind<CR>
 map <F2> :s/^\(.*\)$/#\1/g<CR>
 map <F3> :s/^#//g<CR>
 hi clear SpellBad
-hi SpellBad cterm=underline,bold, ctermfg=red
+
 set backupdir=.backup/,~/.backup/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 set directory=.swp/~/.swp/,/tmp//
+
 function! ToggleNumber()
 	if(&relativenumber ==1)
 		set norelativenumber
@@ -93,33 +96,5 @@ function! ToggleNumber()
 		set relativenumber
 	endif
 endfunction
-let g:vimwiki_list = [{'path':'~/vimwiki/','syntax':'markdown','ext':'md'}]
-let g:vimwiki_global_ext=0
+autocmd FileType * : ColorHighlight
 let g:ale_linters={'python': ['Mypy','pylint']}
-let g:lightline = {}
-
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_infos': 'lightline#ale#infos',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-
-let g:lightline.component_type = {
-      \     'linter_checking': 'right',
-      \     'linter_infos': 'right',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'right',
-      \ }
-
-let g:lightline.active = {
-            \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-            \            [ 'lineinfo' ],
-	        \            [ 'fileformat', 'fileencoding', 'filetype'] ],
-            \ 'left': [ ['mode','paste' ],
-            \ [ 'gitbranch', 'readonly', 'filename', 'modified' ]]
-            \ }
-
-let g:lightline.component_function = {'gitbranch':'gitbranch#name'}
