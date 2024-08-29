@@ -1,5 +1,5 @@
 ! Colors
-#include "/home/john/.xres/themes/mycolors.theme"
+#include "/home/john/.xres/themes/uya.theme"
 
 ! Text
 URxvt.font: xft:Jetbrains Mono Nerd Font:style=Normal:pixelsize=14:antialias=true:hinting=true
@@ -24,7 +24,6 @@ URxvt.iso14755: false
 URxvt.buffered: true
 URxvt.shading: 0
 URxvt.fading: 0
-URxvt.background: rgba:0000/0000/0000/aaaa
 
 ! Enable Common Extensions
 URxvt.perl-ext-common: default,font-size,url-select
@@ -39,4 +38,3 @@ URxvt.keysym.C-slash: font-size:show
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: firefox
 URxvt.url-select.underline:true
-
