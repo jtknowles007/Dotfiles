@@ -37,9 +37,9 @@ font pango:Jetbrains Mono Normal 14
 
 # Auto start
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id picom
+exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id conkystart
+exec --no-startup-id ~/bin/conkystart
 exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
 exec --no-startup-id alsactl --file ~/.config/asound.state restore
 exec_always --no-startup-id numlockx on
@@ -64,7 +64,7 @@ bindsym $mod+t exec --no-startup-id ~/.joplin/Joplin.AppImage --no-sandbox %u
 bindsym $mod+n exec --no-startup-id nemo; focus
 bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
 bindsym $mod+Return exec --no-startup-id $term; focus
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
 bindsym Print exec --no-startup-id flameshot gui; focus
 
 # kill focused window
@@ -116,10 +116,10 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
+default_border normal
+for_window [all] title_window_icon yes
+gaps inner 8
+smart_gaps off
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -214,15 +214,14 @@ mode "resize" {
 
 # Font for window titles
 font pango: Jetbrains Mono 8
-title_align center
+title_align left
 
 # class                 border  bground text    indicator   child_border
-client.focused          $c02    $c02    $c07    $c04        $c02
-client.focused_inactive $c01    $c01    $c08    $c08        $c01
-client.unfocused        $c00    $c00    $c09    $c09        $c00
-client.urgent           $c04    $c04    $fg     $c04        $co4
-client.placeholder      $c00    $coo    $c10    $c00        $c00
-
+client.focused          #4078c0     #4078c0     $fg     $c01  #4078c0
+client.focused_inactive #33609a     #33609a     $bg    $c01    #33609a
+client.unfocused        $bg     $bg     #666666   $fg $bg
+client.urgent           $bg     $bg     $c01    $c01 $c01
+client.placeholder      $bg     $bg     $c00    $c00 $c00
 client.background       $bg
 
 bindsym $mod+r mode "resize"
