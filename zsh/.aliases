@@ -28,7 +28,12 @@ alias upgradable='apt list --upgradable'
 alias upgrade='sudo apt upgrade -y'
 
 # Vimwiki
-alias vimwiki='vim -c VimwikiIndex'
+# alias vimwiki='vim -c VimwikiIndex'
+
+# Mount and Unmount iPhone to filesystem
+alias mountiphone='ifuse ~/AppleIphone'
+alias unmountiphone='fusermount -u ~/AppleIphone'
+
 
 # RecalBox
 alias rbmount='sshfs root@recalbox:/recalbox/share ~/RecalboxShare'
