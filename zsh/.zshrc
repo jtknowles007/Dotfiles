@@ -14,8 +14,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # Remap LS_COLORS
-LS_COLORS=':*.tmp=00;31:*.old=00;31:fi=01;33:*.swp=00;32:*.heic=01;35:*.pdf=01;30:*.xmp=00;31:*.theme=00;33:*.mp4=00;36'
-export LS_COLORS
+#LS_COLORS=':*.tmp=00;31:*.old=00;31:fi=01;33:*.swp=00;32:*.heic=01;35:*.pdf=01;30:*.xmp=00;31:*.theme=00;33:*.mp4=00;36'
+#export LS_COLORS
 
 # Shell options
 setopt autocd
@@ -73,3 +73,5 @@ setopt PROMPT_SUBST
 # Prompt
 PROMPT='%F{12}[%n@%M]%f %F{11}%~%f %F{yellow}${vcs_info_msg_0_}%f %F{11}%# %f'
 RPROMPT=''
+
+eval "$(dircolors ~/.dircolors)"
