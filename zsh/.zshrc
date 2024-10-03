@@ -10,15 +10,30 @@ source $HOME/.aliases
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
 
 # Remap LS_COLORS
 #LS_COLORS=':*.tmp=00;31:*.old=00;31:fi=01;33:*.swp=00;32:*.heic=01;35:*.pdf=01;30:*.xmp=00;31:*.theme=00;33:*.mp4=00;36'
 #export LS_COLORS
 
 # Shell options
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 setopt autocd
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
+#
 
 # The following plugin sections come from u/colemaker360 at https://www.reddit.com/r/zsh/comments/dlmf7r/manually_setup_plugins/
 
