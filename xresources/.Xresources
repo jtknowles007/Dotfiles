@@ -2,8 +2,8 @@
 #include "/home/john/.xres/themes/uya.theme"
 
 ! Text
-URxvt.font: xft:Jetbrains Mono Nerd Font:style=Normal:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont: xft:Jetbrains Mono Nerd Font:style=Bold:pixelsize=14:antialias=true:hinting=true
+URxvt.font: xft:FiraMono Nerd Font Mono:style=Normal:pixelsize=16:antialias=true:hinting=true
+URxvt.boldFont: xft:FiraMono Nerd Font Mono:style=Bold:pixelsize=16:antialias=true:hinting=true
 URxvt.lineSpace: 1
 URxvt.letterSpace: 0
 URxvt.cursorBlink: true
