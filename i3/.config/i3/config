@@ -9,6 +9,8 @@ set $mod1 Mod1
 
 # Define variables
 set $term "urxvt"
+set $browser "firefox"
+
 set_from_resource $bg background
 set_from_resource $fg foreground
 set_from_resource $c00 color0
@@ -59,12 +61,16 @@ for_window [class=".*"] title_window_icon yes
 focus_follows_mouse no
 
 # Application Keyboard Assignments
-bindsym $mod+f exec --no-startup-id firefox; focus
-bindsym $mod+t exec --no-startup-id ~/.joplin/Joplin.AppImage --no-sandbox %u
-bindsym $mod+n exec --no-startup-id nemo; focus
-bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
 bindsym $mod+Return exec --no-startup-id $term; focus
+bindsym $mod+c exec --no-startup-id chromium; focus
 bindsym $mod+d exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
+bindsym $mod+f exec --no-startup-id $browser; focus
+bindsym $mod+m exec --no-startup-id ~/bin/toggledpms
+bindsym $mod+n exec --no-startup-id nemo; focus
+bindsym $mod+p exec --no-startup-id xnview; focus
+bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
+bindsym $mod+t exec --no-startup-id thunar; focus
+
 bindsym Print exec --no-startup-id flameshot gui; focus
 
 # kill focused window
