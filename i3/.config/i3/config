@@ -61,17 +61,19 @@ for_window [class=".*"] title_window_icon yes
 focus_follows_mouse no
 
 # Application Keyboard Assignments
-bindsym $mod+Return exec --no-startup-id $term; focus
-bindsym $mod+c exec --no-startup-id chromium; focus
+bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+d exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
-bindsym $mod+f exec --no-startup-id $browser; focus
+bindsym $mod+f exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id ~/bin/toggledpms
-bindsym $mod+n exec --no-startup-id nemo; focus
-bindsym $mod+p exec --no-startup-id xnview; focus
-bindsym $mod+s exec --no-startup-id synaptic-pkexec; focus
-bindsym $mod+t exec --no-startup-id thunar; focus
+bindsym $mod+n exec --no-startup-id nemo
+bindsym $mod+p exec --no-startup-id xnview
+bindsym $mod+s exec --no-startup-id synaptic-pkexec
+bindsym $mod+t exec --no-startup-id thunar
 
-bindsym Print exec --no-startup-id flameshot gui; focus
+bindsym F5 exec --no-startup-id mate-calculator
+bindsym F6 exec --no-startup-id strawberry
+bindsym Print exec --no-startup-id flameshot gui
 
 # kill focused window
 bindsym $mod+Shift+q kill
