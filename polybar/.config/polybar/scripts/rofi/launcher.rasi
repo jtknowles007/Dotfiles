@@ -11,7 +11,7 @@ configuration {
 	hide-scrollbar: 				true;
 	sidebar-mode: 					false;
 	timeout {
-	    delay: 6;
+	    delay: 20;
 	    action: "kb-cancel";
     }
 }
