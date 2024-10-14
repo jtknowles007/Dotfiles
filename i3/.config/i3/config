@@ -3,18 +3,36 @@
 # John Knowles
 #################################
 
-# Define $mod keys
-# Mod1 = Alt
-# Mod2 = NumLock
-# Mod3 =
-# Mod4 = Windows
-set $mod Mod4
-set $mod1 Mod1
-
 # Define variables
+
+# Define mod keys
+set $mod Mod4
+set $mod1 Alt_L
+set $mod2 Alt_R
+set $mod3 Menu
+
+# System utilities
 set $term "urxvt"
 set $browser "firefox"
 
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Monitors
+set $LeftMon "DVI-D-0"
+set $CenterMon "DisplayPort-2"
+set $RightMon "HDMI-A-0"
+
+# Colors
 set_from_resource $bg background
 set_from_resource $fg foreground
 set_from_resource $c00 color0
@@ -38,8 +56,12 @@ set_from_resource $c13 color13
 set_from_resource $c14 color14
 set_from_resource $c15 color15
 
-# Set font
-font pango:Jetbrains Mono Normal 14
+# System font
+font pango:Jetbrains Mono Nerd Font Normal 14
+
+# Window title font
+font pango: Jetbrains Mono 8
+title_align left
 
 # Auto start
 exec --no-startup-id dex --autostart --environment i3
@@ -120,7 +142,7 @@ bindsym $mod+shift+f fullscreen toggle
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# t3 disable oggle tiling / floating
+# Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -132,23 +154,6 @@ default_border normal
 for_window [all] title_window_icon yes
 gaps inner 8
 smart_gaps off
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# Define monitors
-set $LeftMon "DVI-D-0"
-set $CenterMon "DisplayPort-2"
-set $RightMon "HDMI-A-0"
 
 #Assign workspaces
 workspace $ws1 output $RightMon
@@ -161,7 +166,6 @@ workspace $ws6 output $CenterMon
 workspace $ws8 output $CenterMon
 workspace $ws9 output $LeftMon
 workspace $ws10 output $leftMon
-
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -194,12 +198,15 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# Resize
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -224,10 +231,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-# Font for window titles
-font pango: Jetbrains Mono 8
-title_align left
-
+# Window decoration
 # class                 border  bground text    indicator   child_border
 client.focused          #4078c0     #4078c0     $fg     $c01  #4078c0
 client.focused_inactive #33609a     #33609a     $bg    $c01    #33609a
@@ -236,4 +240,3 @@ client.urgent           $bg     $bg     $c01    $c01 $c01
 client.placeholder      $bg     $bg     $c00    $c00 $c00
 client.background       $bg
 
-bindsym $mod+r mode "resize"
