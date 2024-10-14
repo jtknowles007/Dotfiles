@@ -4,6 +4,10 @@
 #################################
 
 # Define $mod keys
+# Mod1 = Alt
+# Mod2 = NumLock
+# Mod3 =
+# Mod4 = Windows
 set $mod Mod4
 set $mod1 Mod1
 
