@@ -12,7 +12,14 @@ Plugin 'itchyny/vim-gitbranch' "Returns name of git branch
 Plugin 'airblade/vim-gitgutter' "Shows git diff in the sign column
 Plugin 'davidhalter/jedi-vim' "Python autocompletion
 Plugin 'chrisbra/Colorizer' "Colorize color definitions
+Plugin 'vimwiki/vimwiki'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+Plugin 'img-paste-devs/img-paste.vim'
+" Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'iamcco/markdown-preview.nvim'
 call vundle#end()
+
 filetype plugin indent on
  
 set termguicolors
@@ -88,6 +95,7 @@ set backupdir=.backup/,~/.backup/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 set directory=.swp/~/.swp/,/tmp//
 
+" Functions
 function! ToggleNumber()
 	if(&relativenumber ==1)
 		set norelativenumber
@@ -96,5 +104,24 @@ function! ToggleNumber()
 		set relativenumber
 	endif
 endfunction
+
 autocmd FileType * : ColorHighlight
 let g:ale_linters={'python': ['Mypy','pylint']}
+
+" VIMWIKI
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/knowledgebase/', 'syntax': 'markdown',  'ext': 'md', 'name': 'Knowledge Base', 'auto_toc': 1, }]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_auto_header = 1
+let g:vimwiki_conceal_onechar_markers = 0
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_links_space_char = '_'
+hi VimwikiHeader1 cterm=bold gui=bold
+hi VimwikiHeader2 cterm=bold gui=bold
+hi VimwikiHeader3 cterm=bold gui=bold
+hi VimwikiHeader4 cterm=bold gui=bold
+hi VimwikiHeader5 cterm=bold gui=bold
+hi VimwikiHeader6 cterm=bold gui=bold
+autocmd FileType markdown nmap <buffer><silent> <leader>, :call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown nmap <leader>pp :MarkdownPreviewToggle<CR>
+let g:mdip_imgdir = 'images'
+let g:mdip_imgname = 'image'
