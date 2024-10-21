@@ -1,3 +1,7 @@
+# Color man pages
+autoload -U colors && colors
+source $HOME/.zsh_color_manpages
+
 # Main keymap 
 bindkey -v
 bindkey '^p' history-search-backward
@@ -6,9 +10,9 @@ bindkey '^n' history-search-forward
 # Completion
 zmodload zsh/complist
 autoload -U compinit; compinit
-
 # Path
 export PATH="$PATH:/home/john/.local/bin/:/snap/bin:/home/john/bin/"
+# export MANPAGER='moar'
 
 # Aliases
 source $HOME/.aliases
