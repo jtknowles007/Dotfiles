@@ -40,7 +40,6 @@ set undodir=~/.vim/undodir
 set undofile
 set undolevels=10000
 set undoreload=100000
-hi clear SpellBad
 " }}}
 " {{{ FILE HANDLING
 set backupdir=.backup/,~/.backup/,/tmp//
@@ -49,9 +48,12 @@ set directory=.swp/~/.swp/,/tmp//
 " }}}
 " {{{ APPEARANCE 
 set termguicolors
+set showmatch
+set matchtime=2
+autocmd FileType * : ColorHighlight
 let ayucolor="dark"
 colorscheme ayu
-set showmatch
+hi clear SpellBad
 " }}}
 " {{{ INDENTATION
 set tabstop=4
@@ -75,30 +77,32 @@ set hlsearch
 set ignorecase
 set smartcase
 " }}}
-" {{{ FILETYPE AND AUTOCOMMANDS
-    " {{{ ALL FILE TYPES
-    autocmd FileType * : ColorHighlight
-    " }}}
-    " {{{MARKDOWN
-    autocmd FileType markdown nmap <buffer><silent> <leader>, :call mdip#MarkdownClipboardImage()<CR>
-    autocmd FileType markdown nmap <leader>pp :MarkdownPreviewToggle<CR>
-    " }}}
-" }}}
 " {{{ KEY MAPPING
+" Map arrow keys to navigate windows
+nnoremap <up> <C-W>k
+nnoremap <down> <C-W>j
+nnoremap <left> <C-W>h
+nnoremap <right> <C-W>l
+
+"Allow movement over displayed lines, not physical lines
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+
+"Folds
 nnoremap <space> za
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+
 map <F2> :s/^\(.*\)$/#\1/g<CR>
 map <F3> :s/^#//g<CR>
-" }}}
-" {{{ CUSTOM FUNCTIONS
 
+map <Tab> <C-W>w
+map <S-tab> <C-W>p
+map - <C-W><Down>
+" }}}
+" {{{ AUTOCOMMANDS
+" }}}
+" {{{ CUSTOM FUNCTION
 " Toggle Line Numbers
 function! ToggleNumber()
 	if(&relativenumber ==1)
@@ -120,7 +124,7 @@ Plugin 'itchyny/vim-gitbranch' "Returns name of git branch
 Plugin 'airblade/vim-gitgutter' "Shows git diff in the sign column
 Plugin 'davidhalter/jedi-vim' "Python autocompletion
 Plugin 'chrisbra/Colorizer' "Colorize color definitions
-Plugin 'SirVer/ultisnips' "Custom text snippets/templates
+" Plugin 'SirVer/ultisnips' "Custom text snippets/templates
 Plugin 'vimwiki/vimwiki' "Vim based personal wiki
 Plugin 'img-paste-devs/img-paste.vim' "Paste image links into vimwiki
 Plugin 'iamcco/markdown-preview.nvim' "Live preview vimwiki page in browser
@@ -132,13 +136,17 @@ let g:ale_linters={'python': ['Mypy','pylint']}
 " {{{ PLUGIN - IMAGE PASTE
 let g:mdip_imgdir = 'images'
 let g:mdip_imgname = 'image'
+autocmd FileType markdown nmap <buffer><silent> <leader>, :call mdip#MarkdownClipboardImage()<CR>
 " }}}
-" {{{ PLUGIN - ULTISNIPS
-let g:UltiSnipsSnippetsDir = "/home/john/.vim/UltiSnips"
-let g:UltiSnipsEditSplit = "vertical"
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-tab>"
+" {{{ PLUGIN - MARKDOWN PREVIEW
+autocmd FileType markdown nmap <leader>pp :MarkdownPreviewToggle<CR>
+" }}} 
+" {{{ PLUGIN - NERD TREE
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+let NERDTreeShowHidden=1 "Show hidden files (1=Y, 2=N)
 " }}}
 " {{{ PLUGIN - VIMWIKI
 
