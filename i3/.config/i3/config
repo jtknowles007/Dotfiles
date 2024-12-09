@@ -28,9 +28,9 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Monitors
-set $LeftMon "DVI-D-0"
-set $CenterMon "DisplayPort-2"
-set $RightMon "HDMI-A-0"
+set $LeftMon "DisplayPort-0"
+set $CenterMon "HDMI-A-0"
+set $RightMon "DisplayPort-1"
 
 # Colors
 set_from_resource $bg background
@@ -68,7 +68,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id picom --daemon
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/bin/conkystart
-exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
+# exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
 exec --no-startup-id alsactl --file ~/.config/asound.state restore
 exec_always --no-startup-id numlockx on
 exec --no-startup-id nm-applet
@@ -94,9 +94,10 @@ bindsym $mod+f exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id ~/bin/toggledpms
 bindsym $mod+n exec --no-startup-id nemo
 bindsym $mod+p exec --no-startup-id xnview
-bindsym $mod+s exec --no-startup-id synaptic-pkexec
+bindsym $mod+s exec --no-startup-id ~/bin/cura.AppImage
 bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+v exec --no-startup-id urxvt -e vim +VimwikiIndex
+bindsym F2 exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
 bindsym F5 exec --no-startup-id mate-calculator
 bindsym F6 exec --no-startup-id strawberry
 bindsym Print exec --no-startup-id flameshot gui
@@ -156,16 +157,16 @@ gaps inner 8
 smart_gaps off
 
 #Assign workspaces
-workspace $ws1 output $RightMon
-workspace $ws3 output $RightMon
-workspace $ws5 output $RightMon
-workspace $ws7 output $RightMon
+workspace $ws1 output $LeftMon
+workspace $ws3 output $LeftMon
+workspace $ws5 output $LeftMon
+workspace $ws7 output $LeftMon
 workspace $ws2 output $CenterMon
 workspace $ws4 output $CenterMon
 workspace $ws6 output $CenterMon
 workspace $ws8 output $CenterMon
-workspace $ws9 output $LeftMon
-workspace $ws10 output $leftMon
+# workspace $ws9 output $LeftMon
+# workspace $ws10 output $leftMon
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
