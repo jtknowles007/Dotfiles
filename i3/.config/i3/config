@@ -91,10 +91,11 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+d exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
 bindsym $mod+f exec --no-startup-id firefox
+bindsym $mod+Ctrl+f exec --no-startup-id ~/bin/FreeCAD.AppImage
 bindsym $mod+m exec --no-startup-id ~/bin/toggledpms
 bindsym $mod+n exec --no-startup-id nemo
+bindsym $mod+o exec --no-startup-id ~/bin/OrcaSlicer.AppImage
 bindsym $mod+p exec --no-startup-id xnview
-bindsym $mod+s exec --no-startup-id ~/bin/cura.AppImage
 bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+v exec --no-startup-id urxvt -e vim +VimwikiIndex
 bindsym F2 exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
