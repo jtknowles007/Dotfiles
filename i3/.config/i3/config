@@ -65,7 +65,7 @@ title_align left
 
 # Auto start
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id picom --daemon
+# exec --no-startup-id picom --daemon
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/bin/conkystart
 # exec --no-startup-id xrandr --output HDMI-A-0 --primary --output DisplayPort-2 --auto --left-of HDMI-A-0 --output DVI-D-0 --auto --left-of DisplayPort-2
