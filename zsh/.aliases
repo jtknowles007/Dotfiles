@@ -39,3 +39,6 @@ alias unmountiphone='fusermount -u ~/AppleIphone'
 alias rbmount='sshfs root@recalbox:/recalbox/share ~/RecalboxShare'
 alias rbunmount='fusermount3 -u ~/RecalboxShare'
 alias rbssh='ssh -t root@recalbox "cd /recalbox/share ; bash --login"'
+
+# 3D Printer
+alias hydra='ssh john@192.168.1.197'
