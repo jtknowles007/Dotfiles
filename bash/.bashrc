@@ -114,3 +114,19 @@ fi
 bind 'set completion-ignore-case on'
 export PATH="$PATH:/home/john/.local/bin/:/snap/bin"
 LS_COLORS=$LS_COLORS':*.tmp=00;31:*.old=00;31:fi=01;33:*.swp=00;32:*.heic=01;35:*.pdf=01;30:*.xmp=00;31:*.theme=00;33:*.mp4=00;36'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/john/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/john/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/john/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/john/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
