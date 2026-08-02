@@ -11,7 +11,7 @@ bindkey '^n' history-search-forward
 zmodload zsh/complist
 autoload -U compinit; compinit
 # Path
-export PATH="$PATH:/home/john/.local/bin/:/snap/bin:/home/john/bin/"
+export PATH="$PATH:/home/john/.local/bin/:/snap/bin:/home/john/bin/:/home/john/.cargo/bin/:/snap/bin/"
 # export MANPAGER='moar'
 
 # Aliases

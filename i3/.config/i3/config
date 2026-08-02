@@ -65,6 +65,7 @@ title_align left
 
 # Auto start
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xset s off -dpms
 # exec --no-startup-id picom --daemon
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/bin/conkystart
@@ -76,6 +77,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Floating
 floating_modifier $mod
+
+# for obs recording in chromium
+for_window [class="Chromium"] move to output DisplayPort-0
+for_window [class="Chromium"] fullscreen enable
 
 # for_window [class="VirtualBox Machine"] floating enable
 for_window [window_role="pop-up"] floating enable
